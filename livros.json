@@ -185,7 +185,7 @@
         "nome": "As Duas Torres",
         "autor": "J. R. R. Tolkien",
         "situacao": "Lido",
-        "ano": 464,
+        "ano": 2025,
         "paginas": 464
     },
     {
@@ -348,5 +348,12 @@
         "situacao": "Lido",
         "ano": 2024,
         "paginas": 272
+    },
+    {
+        "nome": "O Guia do Mochileiro das Galáxias",
+        "autor": "Douglas Adams",
+        "situacao": "Lendo",
+        "ano": 2025,
+        "paginas": 156
     }
 ]

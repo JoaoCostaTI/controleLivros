@@ -83,7 +83,6 @@ def listarLivrosLido():
                 print(f'{k:<5}{nome:<30}{autor:<20}{situacao:<15}{anoLeitura:<5}{nPaginas:<5}')
         print('~' * 80)   
 def livrosPorAno(anoReferencia):
-   
     #Listar livros com formatação limitada
     qtdLivros = 0
     for k, livro in enumerate(livros, start=1):

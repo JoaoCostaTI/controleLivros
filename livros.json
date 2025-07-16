@@ -355,5 +355,110 @@
         "situacao": "Lendo",
         "ano": 2025,
         "paginas": 156
+    },
+    {
+        "nome": "A queda de númeror",
+        "autor": "J. R. R. Tolkien",
+        "situacao": "Quero Ler",
+        "ano": 2025,
+        "paginas": 344
+    },
+    {
+        "nome": "A queda de gondolin",
+        "autor": "J. R. R. Tolkien",
+        "situacao": "Quero Ler",
+        "ano": 2025,
+        "paginas": 283
+    },
+    {
+        "nome": "Beren e Luthien",
+        "autor": "J. R. R. Tolkien",
+        "situacao": "Quero Ler",
+        "ano": 2025,
+        "paginas": 363
+    },
+    {
+        "nome": "Contos Inacabados",
+        "autor": "J. R. R. Tolkien",
+        "situacao": "Quero Ler",
+        "ano": 2025,
+        "paginas": 622
+    },
+    {
+        "nome": "A guerra dos tronos",
+        "autor": "George R. R. Martin",
+        "situacao": "Quero Ler",
+        "ano": 2025,
+        "paginas": 591
+    },
+    {
+        "nome": "A furia dos Reis",
+        "autor": "George R. R. Martin",
+        "situacao": "Quero Ler",
+        "ano": 2025,
+        "paginas": 653
+    },
+    {
+        "nome": "A tormenta de espadas",
+        "autor": "George R. R. Martin",
+        "situacao": "Quero Ler",
+        "ano": 2025,
+        "paginas": 880
+    },
+    {
+        "nome": "O festim dos corvos",
+        "autor": "George R. R. Martin",
+        "situacao": "Quero Ler",
+        "ano": 2025,
+        "paginas": 641
+    },
+    {
+        "nome": "A dança dos dragões",
+        "autor": "George R. R. Martin",
+        "situacao": "Quero Ler",
+        "ano": 2025,
+        "paginas": 864
+    },
+    {
+        "nome": "As crônicas de Nárnia",
+        "autor": "C. S. Lewis",
+        "situacao": "Quero Ler",
+        "ano": 2025,
+        "paginas": 524
+    },
+    {
+        "nome": "Crime e Castigo",
+        "autor": "Fiódor Dostoiévski",
+        "situacao": "Quero Ler",
+        "ano": 2025,
+        "paginas": 591
+    },
+    {
+        "nome": "O caçador de Pipas",
+        "autor": "Khaled Hosseini",
+        "situacao": "Quero Ler",
+        "ano": 2025,
+        "paginas": 365
+    },
+    {
+        "nome": "Confissões (Santo Agostinho)",
+        "autor": "Santo Agostinho",
+        "situacao": "Quero Ler",
+        "ano": 2025,
+        "paginas": 238
+    },
+    {
+        "nome": "O homem eterno",
+        "autor": "G. K. Chesterton",
+        "situacao": "Quero Ler",
+        "ano": 2025,
+        "paginas": 326
+    },
+    {
+        "nome": "Escolhendo a Gratidão",
+        "autor": "Nancy DeMoss Wolgemuth",
+        "situacao": "Quero Ler",
+        "ano": 2025,
+        "paginas": 264
     }
 ]

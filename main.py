@@ -26,6 +26,7 @@ def limitarTextos(texto, limite):
 ###############################################################################
 #Situação dos Livros
 def listarLivros():
+    totalLivros = 0
     sleep(0.1)
     #Titulo das colunas
     print(f'{"Nº":<5}{"Nome":<30}{"Autor(a)":<20}{"Situação":<15}{"Ano":<5}{"Nº Páginas":<5}')
@@ -38,9 +39,12 @@ def listarLivros():
         anoLeitura = livro['ano']
         nPaginas = livro["paginas"]
         print(f'{k:<5}{nome:<30}{autor:<20}{situacao:<15}{anoLeitura:<5}{nPaginas:<5}')
+        totalLivros += 1
+    print(f'*** Total de Livros: {totalLivros} ***')
     print('-' * 80)
 def listarLivrosLendo():
     sleep(0.1)
+    totalLivros = 0
     #Titulo das colunas
     print(f'{"Nº":<5}{"Nome":<30}{"Autor(a)":<20}{"Situação":<15}{"Ano":<5}{"Nº Páginas":<5}')
     print('-' * 80)
@@ -54,9 +58,12 @@ def listarLivrosLendo():
             nPaginas = livro["paginas"]
 
             print(f'{k:<5}{nome:<30}{autor:<20}{situacao:<15}{anoLeitura:<5}{nPaginas:<5}')
+            totalLivros += 1
+    print(f'*** Total de Livros: {totalLivros} ***')
     print('~' * 80)
 def listarLivrosQueroLer():
     sleep(0.1)
+    totalLivros = 0
     #Titulo das colunas
     print(f'{"Nº":<5}{"Nome":<30}{"Autor(a)":<20}{"Situação":<15}{"Ano":<5}{"NºPáginas":<5}')
     print('-' * 80)
@@ -70,9 +77,12 @@ def listarLivrosQueroLer():
             nPaginas = livro["paginas"]
 
             print(f'{k:<5}{nome:<30}{autor:<20}{situacao:<15}{anoLeitura:<5}{nPaginas:<5}')
+            totalLivros += 1
+    print(f'*** Total de Livros: {totalLivros} ***')
     print('~' * 80)
 def listarLivrosLido():
     sleep(0.1)
+    totalLivros = 0
     #Titulo das colunas
     print(f'{"Nº":<5}{"Nome":<30}{"Autor(a)":<20}{"Situação":<15}{"Ano":<5}{"Nº Páginas":<5}')
     print('-' * 80)
@@ -86,6 +96,8 @@ def listarLivrosLido():
             nPaginas = livro["paginas"]
 
             print(f'{k:<5}{nome:<30}{autor:<20}{situacao:<15}{anoLeitura:<5}{nPaginas:<5}')
+            totalLivros += 1
+    print(f'*** Total de Livros: {totalLivros} ***')
     print('~' * 80)   
 def livrosPorAno(anoReferencia):
     #Listar livros com formatação limitada
@@ -154,7 +166,6 @@ def menu():
     print('-' * tam)
     print('1 - Cadastrar Livro\n2 - Listar Livro\n3 - Excluir Livro\n4 - Estatisticas\n5 - Editar Livro\n6 - Sair do Programa')
     print('-' * tam)
-
 ##############################################################################
 
 while True:

@@ -10,7 +10,7 @@
         "nome": "o monge e o executivo",
         "autor": "James C. Hunter",
         "situacao": "Lido",
-        "ano": 2025,
+        "ano": 2023,
         "paginas": 144
     },
     {
@@ -47,13 +47,6 @@
         "situacao": "Lido",
         "ano": 2023,
         "paginas": 190
-    },
-    {
-        "nome": "o mundo de sofia",
-        "autor": "Jostein Gaarder",
-        "situacao": "Lido",
-        "ano": 2024,
-        "paginas": 560
     },
     {
         "nome": "o hobbit",
@@ -460,5 +453,12 @@
         "situacao": "Quero Ler",
         "ano": 2025,
         "paginas": 264
+    },
+    {
+        "nome": "o mundo de sofia",
+        "autor": "Jostein Gaarder",
+        "situacao": "Lido",
+        "ano": 2024,
+        "paginas": 560
     }
 ]

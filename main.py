@@ -134,20 +134,22 @@ def editarLivro():
         if pesquisarLivro in v['nome']:
             naoEncontrado = False
             tam = 40
-            print(f'livro encontrado = {v['nome']} {v['situacao']} {v['ano']}')
+            print(f'livro encontrado = {v['nome']} | {v['situacao']} | {v['ano']} | {v['paginas']}')
             print('-' * tam)
-            op = int(input('1 - Editar situação\n2 - Editar Ano >>> '))
+            op = int(input('1 - Editar situação\n2 - Editar Ano\n3 - Nº de páginas >>> '))
             #Alterar situação 
             if op == 1:
-                
                 v['situacao'] = str(input('Nova situação: [Quero Ler] [Lido] [Lendo]: '))
                 print('-' * tam)
-                print(f'Alterado com sucesso! para {v['situacao']}')
+                print(f'Alterado com sucesso para {v['situacao']}')
             #Alterar ano de leitura
             elif op == 2:
                 print('-' * tam)
                 v['ano'] = int(input('Novo ano: '))
-                print(f'Alterado com sucesso! para {v['ano']}')
+                print(f'Alterado com sucesso para {v['ano']}')
+            elif op == 3:
+                v['paginas'] = int(input('Nº de páginas: '))
+                print(f'Alterado com sucesso para {v['paginas']}')
             # Caso nenhuma opção der certo
             else:
                 print('-' * tam)

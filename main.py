@@ -177,7 +177,6 @@ while True:
     if op == 1:
         #cadastrar os livros:
         dados = {}
-
         dados['nome'] = input('Nome do livro: ')
         dados['autor'] = input('Nome Autor(a): ')
         while True:

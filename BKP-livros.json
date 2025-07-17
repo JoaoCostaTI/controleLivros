@@ -1,461 +1,461 @@
 [
     {
-        "nome": "bom dia espirito santo",
+        "nome": "Bom dia Espirito Santo",
         "autor": "Benny Hinn",
         "situacao": "Lido",
         "ano": 2023,
         "paginas": 237
     },
     {
-        "nome": "o monge e o executivo",
+        "nome": "O Monge e o executivo",
         "autor": "James C. Hunter",
         "situacao": "Lido",
-        "ano": 2025,
+        "ano": 2023,
         "paginas": 144
     },
     {
-        "nome": "inteligencia socioemocional",
+        "nome": "Inteligência Socioemocional",
         "autor": "Augusto Cury",
         "situacao": "Lido",
         "ano": 2023,
         "paginas": 143
     },
     {
-        "nome": "manual de persuasao do fbi",
+        "nome": "Manual de Persuasão do FBI",
         "autor": "Jack Schafer",
         "situacao": "Lido",
         "ano": 2023,
         "paginas": 256
     },
     {
-        "nome": "como experimentar o amor e o perdao de deus",
+        "nome": "Como experimentar o amor e o perdão de Deus",
         "autor": "Bill Bright",
         "situacao": "Lido",
         "ano": 2023,
         "paginas": 47
     },
     {
-        "nome": "de genio e louco todos tem um pouco",
+        "nome": "De gênio e louco todos tem um pouco",
         "autor": "Augusto Cury",
         "situacao": "Lido",
         "ano": 2023,
         "paginas": 208
     },
     {
-        "nome": "andando com o tanque vazio",
+        "nome": "Andando com o tanque vazio",
         "autor": "Wayne Cordeiro",
         "situacao": "Lido",
         "ano": 2023,
         "paginas": 190
     },
     {
-        "nome": "o mundo de sofia",
+        "nome": "O Mundo de Sofia",
         "autor": "Jostein Gaarder",
         "situacao": "Lido",
         "ano": 2024,
         "paginas": 560
     },
     {
-        "nome": "o hobbit",
+        "nome": "O Hobbit",
         "autor": "J. R. R. Tolkien",
         "situacao": "Lido",
         "ano": 2025,
         "paginas": 336
     },
     {
-        "nome": "a arte da guerra",
+        "nome": "A arte da guerra",
         "autor": "Sun Tzu",
         "situacao": "Lido",
         "ano": 2024,
         "paginas": 80
     },
     {
-        "nome": "a coragem de ser imperfeito",
+        "nome": "A coragem de ser imperfeito",
         "autor": "Brené Brown",
         "situacao": "Lido",
         "ano": 2024,
         "paginas": 208
     },
     {
-        "nome": "em busca de sentido",
+        "nome": "Em busca de sentido",
         "autor": "Viktor Frankl",
         "situacao": "Lido",
         "ano": 2024,
         "paginas": 184
     },
     {
-        "nome": "o menino do pijama listrado",
+        "nome": "O menino do pijama listrado",
         "autor": "John Boyne",
         "situacao": "Lido",
         "ano": 2024,
         "paginas": 190
     },
     {
-        "nome": "fora de serie - outliers",
+        "nome": "Fora de Série - Outliers",
         "autor": "Malcolm Gladwell",
         "situacao": "Lido",
         "ano": 2024,
         "paginas": 284
     },
     {
-        "nome": "cachorro velho",
+        "nome": "Cachorro Velho",
         "autor": "Teresa Cárdenas",
         "situacao": "Lido",
         "ano": 2024,
         "paginas": 142
     },
     {
-        "nome": "memorias do subsolo",
+        "nome": "Memórias do subsolo",
         "autor": "Fiódor Dostoiévski",
         "situacao": "Lido",
         "ano": 2024,
         "paginas": 152
     },
     {
-        "nome": "cartas de um diabo a seu aprendiz",
+        "nome": "Cartas de um Diabo a seu aprendiz",
         "autor": "C. S. Lewis",
         "situacao": "Lido",
         "ano": 2024,
         "paginas": 208
     },
     {
-        "nome": "aprender a viver",
+        "nome": "Aprender a viver",
         "autor": "Luc Ferry",
         "situacao": "Lido",
         "ano": 2024,
         "paginas": 239
     },
     {
-        "nome": "essencialismo",
+        "nome": "Essencialismo",
         "autor": "Greg McKeown",
         "situacao": "Lido",
         "ano": 2024,
         "paginas": 272
     },
     {
-        "nome": "o homem mais rico da babilonia",
+        "nome": "O Homem Mais Rico da Babilônia",
         "autor": "George S. Clason",
         "situacao": "Lido",
         "ano": 2024,
         "paginas": 157
     },
     {
-        "nome": "o poder do habito",
+        "nome": "O Poder do Hábito",
         "autor": "Charles Duhigg",
         "situacao": "Lido",
         "ano": 2024,
         "paginas": 407
     },
     {
-        "nome": "o colecionador de lagrimas",
+        "nome": "O Colecionador de Lágrimas",
         "autor": "Augusto Cury",
         "situacao": "Lido",
         "ano": 2024,
         "paginas": 375
     },
     {
-        "nome": "onze licoes sobre a virtude",
+        "nome": "Onze Lições Sobre a Virtude",
         "autor": "Santo Tomás de Aquino",
         "situacao": "Lido",
         "ano": 2024,
         "paginas": 116
     },
     {
-        "nome": "a vida intelectual",
+        "nome": "A Vida Intelectual",
         "autor": "A.-D. Sertillanges",
         "situacao": "Lido",
         "ano": 2024,
         "paginas": 224
     },
     {
-        "nome": "habitos atomicos",
+        "nome": "Hábitos Atômicos",
         "autor": "James Clear",
         "situacao": "Lido",
         "ano": 2024,
         "paginas": 320
     },
     {
-        "nome": "a sociedade do anel",
+        "nome": "A Sociedade do Anel",
         "autor": "J. R. R. Tolkien",
         "situacao": "Lido",
         "ano": 2024,
         "paginas": 604
     },
     {
-        "nome": "as duas torres",
+        "nome": "As Duas Torres",
         "autor": "J. R. R. Tolkien",
         "situacao": "Lido",
         "ano": 2025,
         "paginas": 464
     },
     {
-        "nome": "o retorno do rei",
+        "nome": "O Retorno do Rei",
         "autor": "J. R. R. Tolkien",
         "situacao": "Lido",
         "ano": 2024,
         "paginas": 608
     },
     {
-        "nome": "ego transformado",
+        "nome": "Ego Transformado",
         "autor": "Timothy Keller",
         "situacao": "Lido",
         "ano": 2025,
         "paginas": 48
     },
     {
-        "nome": "trabalho focado",
+        "nome": "Trabalho Focado",
         "autor": "Cal Newport",
         "situacao": "Lido",
         "ano": 2025,
         "paginas": 304
     },
     {
-        "nome": "as ideias tem consequencias",
+        "nome": "As Ideias têm Consequências",
         "autor": "Richard M. Weaver",
         "situacao": "Lido",
         "ano": 2025,
         "paginas": 208
     },
     {
-        "nome": "a educacao da vontade",
+        "nome": "A Educação da Vontade",
         "autor": "Jules Payot",
         "situacao": "Lido",
         "ano": 2025,
         "paginas": 240
     },
     {
-        "nome": "seja egoista com sua carreira",
+        "nome": "Seja Egoísta Com Sua Carreira",
         "autor": "Luciano Responde",
         "situacao": "Lido",
         "ano": 2025,
         "paginas": 208
     },
     {
-        "nome": "como evitar preocupacoes e comecar a viver",
+        "nome": "Como evitar preocupações e começar a viver",
         "autor": "Dale Carnegie",
         "situacao": "Lido",
         "ano": 2025,
         "paginas": 320
     },
     {
-        "nome": "harry potter e a pedra filosofal",
+        "nome": "Harry Potter e a Pedra Filosofal",
         "autor": "J.K. Rowling",
         "situacao": "Lido",
         "ano": 2025,
         "paginas": 208
     },
     {
-        "nome": "harry potter e a camara secreta",
+        "nome": "Harry Potter e a Câmara Secreta",
         "autor": "J.K. Rowling",
         "situacao": "Lido",
         "ano": 2025,
         "paginas": 224
     },
     {
-        "nome": "harry potter e o prisioneiro de azkaban",
+        "nome": "Harry Potter e o Prisioneiro de Azkaban",
         "autor": "J.K. Rowling",
         "situacao": "Lido",
         "ano": 2025,
         "paginas": 288
     },
     {
-        "nome": "harry potter e o calice de fogo",
+        "nome": "Harry Potter e o Cálice de Fogo",
         "autor": "J.K. Rowling",
         "situacao": "Lido",
         "ano": 2025,
         "paginas": 480
     },
     {
-        "nome": "harry potter e a ordem da fenix",
+        "nome": "Harry Potter e a Ordem da Fênix",
         "autor": "J.K. Rowling",
         "situacao": "Lido",
         "ano": 2025,
         "paginas": 640
     },
     {
-        "nome": "harry potter e o enigma do principe",
+        "nome": "Harry Potter e o Enigma do Príncipe",
         "autor": "J.K. Rowling",
         "situacao": "Lido",
         "ano": 2025,
         "paginas": 432
     },
     {
-        "nome": "harry potter e as reliquias da morte",
+        "nome": "Harry Potter e as Relíquias da Morte",
         "autor": "J.K. Rowling",
         "situacao": "Lido",
         "ano": 2025,
         "paginas": 512
     },
     {
-        "nome": "o silmarillion",
+        "nome": "O Silmarillion",
         "autor": "J. R. R. Tolkien",
         "situacao": "Lido",
         "ano": 2025,
         "paginas": 496
     },
     {
-        "nome": "roverando",
+        "nome": "Roverando",
         "autor": "J. R. R. Tolkien",
         "situacao": "Lido",
         "ano": 2025,
         "paginas": 160
     },
     {
-        "nome": "mestre giles d'aldeia",
+        "nome": "Mestre Giles d'Aldeia",
         "autor": "J. R. R. Tolkien",
         "situacao": "Lido",
         "ano": 2025,
         "paginas": 144
     },
     {
-        "nome": "entendendo algoritmos",
+        "nome": "Entendendo Algoritmos",
         "autor": "Aditya Y. Bhargava",
         "situacao": "Lido",
         "ano": 2025,
         "paginas": 264
     },
     {
-        "nome": "minimalismo digital",
+        "nome": "Minimalismo Digital",
         "autor": "Cal Newport",
         "situacao": "Lido",
         "ano": 2024,
         "paginas": 304
     },
     {
-        "nome": "o velho e o mar",
+        "nome": "O Velho e o Mar",
         "autor": "Ernest Hemingway",
         "situacao": "Lido",
         "ano": 2023,
         "paginas": 111
     },
     {
-        "nome": "vencendo a ansiedade e a preocupacao com a terapia cognitivo-comportamental",
+        "nome": "Vencendo a Ansiedade e a Preocupação com a terapia cognitivo-comportamental",
         "autor": "Aaron T. Beck",
         "situacao": "Lido",
         "ano": 2024,
         "paginas": 296
     },
     {
-        "nome": "como falar corretamente e sem inibicoes",
+        "nome": "Como Falar Corretamente e Sem Inibições",
         "autor": "Reinaldo Polito",
         "situacao": "Lido",
         "ano": 2024,
         "paginas": 240
     },
     {
-        "nome": "campo de batalha da mente",
+        "nome": "Campo de Batalha da Mente",
         "autor": "Joyce Meyer",
         "situacao": "Lido",
         "ano": 2024,
         "paginas": 272
     },
     {
-        "nome": "o guia do mochileiro das galaxias",
+        "nome": "O Guia do Mochileiro das Galáxias",
         "autor": "Douglas Adams",
         "situacao": "Lendo",
         "ano": 2025,
         "paginas": 156
     },
     {
-        "nome": "a queda de numeror",
+        "nome": "A queda de númeror",
         "autor": "J. R. R. Tolkien",
         "situacao": "Quero Ler",
         "ano": 2025,
         "paginas": 344
     },
     {
-        "nome": "a queda de gondolin",
+        "nome": "A queda de gondolin",
         "autor": "J. R. R. Tolkien",
         "situacao": "Quero Ler",
         "ano": 2025,
         "paginas": 283
     },
     {
-        "nome": "beren e luthien",
+        "nome": "Beren e Luthien",
         "autor": "J. R. R. Tolkien",
         "situacao": "Quero Ler",
         "ano": 2025,
         "paginas": 363
     },
     {
-        "nome": "contos inacabados",
+        "nome": "Contos Inacabados",
         "autor": "J. R. R. Tolkien",
         "situacao": "Quero Ler",
         "ano": 2025,
         "paginas": 622
     },
     {
-        "nome": "a guerra dos tronos",
+        "nome": "A guerra dos tronos",
         "autor": "George R. R. Martin",
         "situacao": "Quero Ler",
         "ano": 2025,
         "paginas": 591
     },
     {
-        "nome": "a furia dos reis",
+        "nome": "A furia dos Reis",
         "autor": "George R. R. Martin",
         "situacao": "Quero Ler",
         "ano": 2025,
         "paginas": 653
     },
     {
-        "nome": "a tormenta de espadas",
+        "nome": "A tormenta de espadas",
         "autor": "George R. R. Martin",
         "situacao": "Quero Ler",
         "ano": 2025,
         "paginas": 880
     },
     {
-        "nome": "o festim dos corvos",
+        "nome": "O festim dos corvos",
         "autor": "George R. R. Martin",
         "situacao": "Quero Ler",
         "ano": 2025,
         "paginas": 641
     },
     {
-        "nome": "a danca dos dragoes",
+        "nome": "A dança dos dragões",
         "autor": "George R. R. Martin",
         "situacao": "Quero Ler",
         "ano": 2025,
         "paginas": 864
     },
     {
-        "nome": "as cronicas de narnia",
+        "nome": "As crônicas de Nárnia",
         "autor": "C. S. Lewis",
         "situacao": "Quero Ler",
         "ano": 2025,
         "paginas": 524
     },
     {
-        "nome": "crime e castigo",
+        "nome": "Crime e Castigo",
         "autor": "Fiódor Dostoiévski",
         "situacao": "Quero Ler",
         "ano": 2025,
         "paginas": 591
     },
     {
-        "nome": "o cacador de pipas",
+        "nome": "O caçador de Pipas",
         "autor": "Khaled Hosseini",
         "situacao": "Quero Ler",
         "ano": 2025,
         "paginas": 365
     },
     {
-        "nome": "confissoes (santo agostinho)",
+        "nome": "Confissões (Santo Agostinho)",
         "autor": "Santo Agostinho",
         "situacao": "Quero Ler",
         "ano": 2025,
         "paginas": 238
     },
     {
-        "nome": "o homem eterno",
+        "nome": "O homem eterno",
         "autor": "G. K. Chesterton",
         "situacao": "Quero Ler",
         "ano": 2025,
         "paginas": 326
     },
     {
-        "nome": "escolhendo a gratidao",
+        "nome": "Escolhendo a Gratidão",
         "autor": "Nancy DeMoss Wolgemuth",
         "situacao": "Quero Ler",
         "ano": 2025,

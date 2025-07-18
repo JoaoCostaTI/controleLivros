@@ -99,6 +99,33 @@ def listarLivrosLido():
             totalLivros += 1
     print(f'*** Total de Livros: {totalLivros} ***')
     print('~' * 80)   
+def listarLivrosAbandonados():
+    sleep(0.1)
+    totalLivros = 0
+    #Titulo das colunas
+    print(f'{"Nº":<5}{"Nome":<30}{"Autor(a)":<20}{"Situação":<15}{"Ano":<5}{"Nº Páginas":<5}')
+    print('-' * 80)
+    #Listar livros com formatação limitada
+    for k, livro in enumerate(livros, start=1):
+        if livro['situacao'] == 'Abandonado':
+            nome = limitarTextos(livro['nome'], 30)
+            autor = limitarTextos(livro['autor'], 20)
+            situacao = limitarTextos(livro['situacao'], 15)
+            anoLeitura = livro['ano']
+            nPaginas = livro["paginas"]
+
+            print(f'{k:<5}{nome:<30}{autor:<20}{situacao:<15}{anoLeitura:<5}{nPaginas:<5}')
+            totalLivros += 1
+    print(f'*** Total de Livros: {totalLivros} ***')
+    #Passagem da quantidade de livros abandonados
+    
+def contarLivrosAbandonados(totalLivros = 0):
+    #Listar livros com formatação limitada
+    totalLivros = 0
+    for livro in livros:
+        if livro['situacao'] == 'Abandonado':
+            totalLivros += 1
+    return totalLivros
 def livrosPorAno(anoReferencia):
     #Listar livros com formatação limitada
     qtdLivros = 0
@@ -139,7 +166,7 @@ def editarLivro():
             op = int(input('1 - Editar situação\n2 - Editar Ano\n3 - Nº de páginas >>> '))
             #Alterar situação 
             if op == 1:
-                v['situacao'] = str(input('Nova situação: [Quero Ler] [Lido] [Lendo]: '))
+                v['situacao'] = str(input('Nova situação: [Quero Ler] [Lido] [Lendo][Abandonado]: '))
                 print('-' * tam)
                 print(f'Alterado com sucesso para {v['situacao']}')
             #Alterar ano de leitura
@@ -154,6 +181,7 @@ def editarLivro():
             else:
                 print('-' * tam)
                 print('Opção inválida, nada foi alterado.')
+                break
             
     if naoEncontrado:
         print('-' * tam)
@@ -170,96 +198,115 @@ def menu():
     print('-' * tam)
 ##############################################################################
 
+
 while True:
-    menu()
-    op = int(input('Sua opção: '))
+    try:
+        menu()
+        op = int(input('Sua opção: '))
 
-    if op == 1:
-        #cadastrar os livros:
-        dados = {}
-        dados['nome'] = input('Nome do livro: ')
-        dados['autor'] = input('Nome Autor(a): ')
-        while True:
-            print('---Situação---\n1 - [Quero Ler]\n2 - [Lendo]\n3 - [Lido]')
-            situacao = int(input('Sua opção: '))
-            if situacao <= 0 or situacao > 3:
-                print('Erro! Selecione apenas as situações acima! ')
-            elif situacao == 1:
-                dados['situacao'] = "Quero Ler"
-                break
-            elif situacao == 2:
-                dados['situacao'] = "Lendo"
-                break
-            elif situacao == 3:
-                dados['situacao'] = "Lido"
-                break
+        if op == 1:
+            #cadastrar os livros:
+            dados = {}
+            dados['nome'] = input('Nome do livro: ')
+            dados['autor'] = input('Nome Autor(a): ')
+            while True:
+                print('---Situação---\n1 - [Quero Ler]\n2 - [Lendo]\n3 - [Lido]')
+                situacao = int(input('Sua opção: '))
+                if situacao <= 0 or situacao > 3:
+                    print('Erro! Selecione apenas as situações acima! ')
+                elif situacao == 1:
+                    dados['situacao'] = "Quero Ler"
+                    break
+                elif situacao == 2:
+                    dados['situacao'] = "Lendo"
+                    break
+                elif situacao == 3:
+                    dados['situacao'] = "Lido"
+                    break
 
-        dados['ano'] =  int(input('Ano de leitura: '))
-        dados['paginas'] = int(input('Páginas: '))
-        livros.append(dados)
-        preencherJson()
-
-    elif op == 2:
-        if len(livros) == 0:
-            formatacao('Nenhum livro cadastrado! Cadastre ao menos 1 livro! ')   
+            dados['ano'] =  int(input('Ano de leitura: '))
+            dados['paginas'] = int(input('Páginas: '))
+            livros.append(dados)
+            try:
+                preencherJson()
+                print('Livro cadastrado com sucesso. ')
+            except ValueError:
+                print('Algo deu errado, não foi possível cadastrar o livro.')
+        elif op == 2:
+            if len(livros) == 0:
+                formatacao('Nenhum livro cadastrado! Cadastre ao menos 1 livro! ')   
+            else:
+                while True:
+                    try:
+                        tam = 40
+                        print('1 - Todos os Livros\n2 - Lendo\n3 - Quero Ler\n4 - Lido\n5 - Abandonados\n6 - Menu anterior')
+                        subOpcao = int(input('Sua opção: '))
+                        if subOpcao == 6:
+                            print('Voltando ao menu anterior...')
+                            break
+                        elif subOpcao == 1:
+                            listarLivros()
+                        elif subOpcao == 2:
+                            listarLivrosLendo()
+                        elif subOpcao == 3:
+                            listarLivrosQueroLer()
+                        elif subOpcao == 4:
+                            listarLivrosLido()
+                        elif subOpcao == 5:
+                            listarLivrosAbandonados()
+                        else:
+                            print('Opção inválida! Selecione apenas dentre as disponiveis! ')
+                        print('-' * tam)
+                    except ValueError:
+                        print('⚠ Por favor, escolha uma opção válida (1 a 5). Somente números são aceitos.')
+                        continue                
+        elif op == 3:
+                #EXCLUSÃO DE LIVROS
+                listarLivros()
+                while True:
+                    try:
+                        print('Qual livro deseja excluir? (0 Volta para menu anterior)')
+                        op = int(input('Livro: '))
+                        if op == 0:
+                            print('Voltando ao menu anterior...')
+                            break
+                        if op < 0 or op > len(livros):
+                            print('Não existe esse livro! Tente novamente')
+                        else:
+                            print(f'*' * 65)
+                            print(f'Livro [{livros[op-1]['nome']}] excluído com sucesso!')
+                            del livros[op - 1] 
+                            print(f'*' * 65)
+                            preencherJson()
+                            break
+                    except ValueError:
+                        print('⚠ Por favor, escolha um livro válido da lista acima!. ')
+        elif op == 4:
+            #Estatisticas
+            tam = 40
+            print('~' * tam)
+            sleep(0.3)
+            print(f'{"Estatisticas de Leitura".center(tam)}')
+            print('~' * tam)
+            sleep(0.1)
+            print(f'2023 = {livrosPorAno(2023)}x')
+            print(f'2024 = {livrosPorAno(2024)}x')
+            print(f'2025 = {livrosPorAno(2025)}x')
+            print(f'Abandonados = {contarLivrosAbandonados()}x')
+            print(f'Paginômetro = {paginometro()}')
+            print(f'Média de Páginas = {mediaPaginas()}')
+            print('~' * tam)
+            sleep(0.1)
+        elif op == 5:
+            editarLivro()
+            preencherJson()
+        elif op == 6:
+            sleep(0.1)
+            print('Saindo do Programa...')
+            sleep(0.3)
+            break
         else:
-            while True:
-                tam = 40
-                print('1 - Todos os Livros\n2 - Lendo\n3 - Quero Ler\n4 - Lido\n5 - Menu anterior')
-                subOpcao = int(input('Sua opção: '))
-                if subOpcao == 5:
-                    print('Voltando ao menu anterior...')
-                    break
-                elif subOpcao == 1:
-                    listarLivros()
-                elif subOpcao == 2:
-                    listarLivrosLendo()
-                elif subOpcao == 3:
-                    listarLivrosQueroLer()
-                elif subOpcao == 4:
-                    listarLivrosLido()
-                else:
-                    print('Opção inválida! Selecione apenas dentre as disponiveis! ')
-                print('-' * tam)
-    elif op == 3:
-            #EXCLUSÃO DE LIVROS
-            listarLivros()
-            while True:
-                print('Qual livro deseja excluir? (Digite o número)')
-                op = int(input('Livro: '))
-                if op > len(livros):
-                    print('Não existe esse livro! Tente novamente')
-                else:
-                    print(f'*' * 65)
-                    print(f'Livro [{livros[op-1]['nome']}] excluído com sucesso!')
-                    del livros[op - 1] 
-                    print(f'*' * 65)
-                    preencherJson()
-                    break
-    elif op == 4:
-        #Estatisticas
-        tam = 40
-        print('~' * tam)
-        sleep(0.3)
-        print(f'{"Estatisticas de Leitura".center(tam)}')
-        print('~' * tam)
-        sleep(0.1)
-        print(f'2023 = {livrosPorAno(2023)}x')
-        print(f'2024 = {livrosPorAno(2024)}x')
-        print(f'2025 = {livrosPorAno(2025)}x')
-        print(f'Paginômetro = {paginometro()}')
-        print(f'Média de Páginas = {mediaPaginas()}')
-        print('~' * tam)
-        sleep(0.1)
-    elif op == 5:
-        editarLivro()
-        preencherJson()
-    elif op == 6:
-        sleep(0.1)
-        print('Saindo do Programa...')
-        sleep(0.3)
-        break
-    else:
-        formatacao('Opção inválida! Selecione uma opção do menu! ')
-        
+            formatacao('Opção inválida! Selecione uma opção do menu! ')   
+    except ValueError:
+        print('Erro! Selecione dentre as opções disponíveis! ')
 

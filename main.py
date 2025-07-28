@@ -25,22 +25,12 @@ def limitarTextos(texto, limite):
 
 ###############################################################################
 #Situação dos Livros
-def menu():
-    sleep(0.3)
-    tam = 40
-    print('-' * tam)
-    print(f'{"Sistema de Controle de Leitura".center(tam)}')
-    print('-' * tam)
-    print('1 - Cadastrar Livro\n2 - Listar Livro\n3 - Excluir Livro\n4 - Estatisticas\n5 - Editar Livro\n6 - Sair do Programa')
-    print('-' * tam)
-def cabecalho():
-    print(f'{"Nº":<5}{"Nome":<30}{"Autor(a)":<20}{"Situação":<15}{"Ano":<5}{"NP":<5} {"QL":<3}')
-    print('-' * 83)
 def listarLivros():
     totalLivros = 0
     sleep(0.1)
     #Titulo das colunas
-    cabecalho()
+    print(f'{"Nº":<5}{"Nome":<30}{"Autor(a)":<20}{"Situação":<15}{"Ano":<5}{"Nº Páginas":<5}')
+    print('-' * 80)
         #Listar livros com formatação limitada
     for k, livro in enumerate(livros, start=1):
         nome = limitarTextos(livro['nome'], 30)
@@ -48,16 +38,16 @@ def listarLivros():
         situacao = limitarTextos(livro['situacao'], 15)
         anoLeitura = livro['ano']
         nPaginas = livro["paginas"]
-        ql = livro['ql']
-        print(f'{k:<5}{nome:<30}{autor:<20}{situacao:<15}{anoLeitura:<5}{nPaginas:<5}{ql:^3}')
-        totalLivros += ql
+        print(f'{k:<5}{nome:<30}{autor:<20}{situacao:<15}{anoLeitura:<5}{nPaginas:<5}')
+        totalLivros += 1
     print(f'*** Total de Livros: {totalLivros} ***')
     print('-' * 80)
 def listarLivrosLendo():
     sleep(0.1)
     totalLivros = 0
     #Titulo das colunas
-    cabecalho()
+    print(f'{"Nº":<5}{"Nome":<30}{"Autor(a)":<20}{"Situação":<15}{"Ano":<5}{"Nº Páginas":<5}')
+    print('-' * 80)
     #Listar livros com formatação limitada
     for k, livro in enumerate(livros, start=1):
         if livro['situacao'] == 'Lendo':
@@ -66,17 +56,17 @@ def listarLivrosLendo():
             situacao = limitarTextos(livro['situacao'], 15)
             anoLeitura = livro['ano']
             nPaginas = livro["paginas"]
-            ql = livro['ql']
 
-            print(f'{k:<5}{nome:<30}{autor:<20}{situacao:<15}{anoLeitura:<5}{nPaginas:<5}{ql:^3}')
-            totalLivros += ql
+            print(f'{k:<5}{nome:<30}{autor:<20}{situacao:<15}{anoLeitura:<5}{nPaginas:<5}')
+            totalLivros += 1
     print(f'*** Total de Livros: {totalLivros} ***')
     print('~' * 80)
 def listarLivrosQueroLer():
     sleep(0.1)
     totalLivros = 0
     #Titulo das colunas
-    cabecalho()
+    print(f'{"Nº":<5}{"Nome":<30}{"Autor(a)":<20}{"Situação":<15}{"Ano":<5}{"NºPáginas":<5}')
+    print('-' * 80)
             #Listar livros com formatação limitada
     for k, livro in enumerate(livros, start=1):
         if livro['situacao'] == 'Quero Ler':
@@ -85,9 +75,8 @@ def listarLivrosQueroLer():
             situacao = limitarTextos(livro['situacao'], 15)
             anoLeitura = livro['ano']
             nPaginas = livro["paginas"]
-            ql = livro['ql']
 
-            print(f'{k:<5}{nome:<30}{autor:<20}{situacao:<15}{anoLeitura:<5}{nPaginas:<5}{ql:^3}')
+            print(f'{k:<5}{nome:<30}{autor:<20}{situacao:<15}{anoLeitura:<5}{nPaginas:<5}')
             totalLivros += 1
     print(f'*** Total de Livros: {totalLivros} ***')
     print('~' * 80)
@@ -95,7 +84,8 @@ def listarLivrosLido():
     sleep(0.1)
     totalLivros = 0
     #Titulo das colunas
-    cabecalho()
+    print(f'{"Nº":<5}{"Nome":<30}{"Autor(a)":<20}{"Situação":<15}{"Ano":<5}{"Nº Páginas":<5}')
+    print('-' * 80)
     #Listar livros com formatação limitada
     for k, livro in enumerate(livros, start=1):
         if livro['situacao'] == 'Lido':
@@ -104,17 +94,17 @@ def listarLivrosLido():
             situacao = limitarTextos(livro['situacao'], 15)
             anoLeitura = livro['ano']
             nPaginas = livro["paginas"]
-            ql = livro['ql']
 
-            print(f'{k:<5}{nome:<30}{autor:<20}{situacao:<15}{anoLeitura:<5}{nPaginas:<5}{ql:^3}')
-            totalLivros += ql
+            print(f'{k:<5}{nome:<30}{autor:<20}{situacao:<15}{anoLeitura:<5}{nPaginas:<5}')
+            totalLivros += 1
     print(f'*** Total de Livros: {totalLivros} ***')
     print('~' * 80)   
 def listarLivrosAbandonados():
     sleep(0.1)
     totalLivros = 0
     #Titulo das colunas
-    cabecalho()
+    print(f'{"Nº":<5}{"Nome":<30}{"Autor(a)":<20}{"Situação":<15}{"Ano":<5}{"Nº Páginas":<5}')
+    print('-' * 80)
     #Listar livros com formatação limitada
     for k, livro in enumerate(livros, start=1):
         if livro['situacao'] == 'Abandonado':
@@ -123,12 +113,12 @@ def listarLivrosAbandonados():
             situacao = limitarTextos(livro['situacao'], 15)
             anoLeitura = livro['ano']
             nPaginas = livro["paginas"]
-            ql = livro['ql']
-            
-            print(f'{k:<5}{nome:<30}{autor:<20}{situacao:<15}{anoLeitura:<5}{nPaginas:<5}{ql:^3}')
+
+            print(f'{k:<5}{nome:<30}{autor:<20}{situacao:<15}{anoLeitura:<5}{nPaginas:<5}')
             totalLivros += 1
     print(f'*** Total de Livros: {totalLivros} ***')
-    #Passagem da quantidade de livros abandonados   
+    #Passagem da quantidade de livros abandonados
+    
 def contarLivrosAbandonados(totalLivros = 0):
     #Listar livros com formatação limitada
     totalLivros = 0
@@ -140,9 +130,8 @@ def livrosPorAno(anoReferencia):
     #Listar livros com formatação limitada
     qtdLivros = 0
     for k, livro in enumerate(livros, start=1):
-        
-        if livro['ano'] == anoReferencia and livro['situacao'] == 'Lido' or livro['situacao'] == 'Relendo':
-            qtdLivros += livro['ql']
+        if livro['ano'] == anoReferencia and livro['situacao'] == 'Lido':
+            qtdLivros += 1
     return qtdLivros
 def preencherJson():
      with open('livros.json', 'w', encoding='utf-8') as arquivo:
@@ -172,24 +161,22 @@ def editarLivro():
         if pesquisarLivro in v['nome']:
             naoEncontrado = False
             tam = 40
-            print(f'livro encontrado = {v["nome"]} | {v["situacao"]} | {v["ano"]} | {v["paginas"]} | {v["ql"]}')
+            print(f'livro encontrado = {v['nome']} | {v['situacao']} | {v['ano']} | {v['paginas']}')
             print('-' * tam)
             op = int(input('1 - Editar situação\n2 - Editar Ano\n3 - Nº de páginas >>> '))
             #Alterar situação 
             if op == 1:
-                v['situacao'] = str(input('Nova situação: [Quero Ler] [Lido] [Lendo] [Abandonado] [Relendo]: '))
+                v['situacao'] = str(input('Nova situação: [Quero Ler] [Lido] [Lendo][Abandonado]: '))
                 print('-' * tam)
-                print(f'Alterado com sucesso para {v["situacao"]}')
-                if v['situacao'] == 'Relendo':
-                    v['ql'] += 1
+                print(f'Alterado com sucesso para {v['situacao']}')
             #Alterar ano de leitura
             elif op == 2:
                 print('-' * tam)
                 v['ano'] = int(input('Novo ano: '))
-                print(f'Alterado com sucesso para {v["ano"]}')
+                print(f'Alterado com sucesso para {v['ano']}')
             elif op == 3:
                 v['paginas'] = int(input('Nº de páginas: '))
-                print(f'Alterado com sucesso para {v["paginas"]}')
+                print(f'Alterado com sucesso para {v['paginas']}')
             # Caso nenhuma opção der certo
             else:
                 print('-' * tam)
@@ -201,7 +188,16 @@ def editarLivro():
         print('Livro não encontrado! ')
     
     print('-' * tam)
+def menu():
+    sleep(0.3)
+    tam = 40
+    print('-' * tam)
+    print(f'{"Sistema de Controle de Leitura".center(tam)}')
+    print('-' * tam)
+    print('1 - Cadastrar Livro\n2 - Listar Livro\n3 - Excluir Livro\n4 - Estatisticas\n5 - Editar Livro\n6 - Sair do Programa')
+    print('-' * tam)
 ##############################################################################
+
 
 while True:
     try:
@@ -278,7 +274,7 @@ while True:
                             print('Não existe esse livro! Tente novamente')
                         else:
                             print(f'*' * 65)
-                            print(f'Livro [{livros[op-1]["nome"]}] excluído com sucesso!')
+                            print(f'Livro [{livros[op-1]['nome']}] excluído com sucesso!')
                             del livros[op - 1] 
                             print(f'*' * 65)
                             preencherJson()

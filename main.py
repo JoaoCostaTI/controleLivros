@@ -161,22 +161,22 @@ def editarLivro():
         if pesquisarLivro in v['nome']:
             naoEncontrado = False
             tam = 40
-            print(f'livro encontrado = {v['nome']} | {v['situacao']} | {v['ano']} | {v['paginas']}')
+            print(f'livro encontrado = {v["nome"]} | {v["situacao"]} | {v["ano"]} | {v["paginas"]}')
             print('-' * tam)
             op = int(input('1 - Editar situação\n2 - Editar Ano\n3 - Nº de páginas >>> '))
             #Alterar situação 
             if op == 1:
                 v['situacao'] = str(input('Nova situação: [Quero Ler] [Lido] [Lendo][Abandonado]: '))
                 print('-' * tam)
-                print(f'Alterado com sucesso para {v['situacao']}')
+                print(f'Alterado com sucesso para {v["situacao"]}')
             #Alterar ano de leitura
             elif op == 2:
                 print('-' * tam)
                 v['ano'] = int(input('Novo ano: '))
-                print(f'Alterado com sucesso para {v['ano']}')
+                print(f'Alterado com sucesso para {v["ano"]}')
             elif op == 3:
                 v['paginas'] = int(input('Nº de páginas: '))
-                print(f'Alterado com sucesso para {v['paginas']}')
+                print(f'Alterado com sucesso para {v["paginas"]}')
             # Caso nenhuma opção der certo
             else:
                 print('-' * tam)
@@ -274,7 +274,7 @@ while True:
                             print('Não existe esse livro! Tente novamente')
                         else:
                             print(f'*' * 65)
-                            print(f'Livro [{livros[op-1]['nome']}] excluído com sucesso!')
+                            print(f'Livro [{livros[op-1]["nome"]}] excluído com sucesso!')
                             del livros[op - 1] 
                             print(f'*' * 65)
                             preencherJson()

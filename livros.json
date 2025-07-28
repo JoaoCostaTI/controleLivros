@@ -366,7 +366,7 @@
     {
         "nome": "beren e luthien",
         "autor": "J. R. R. Tolkien",
-        "situacao": "Quero Ler",
+        "situacao": "Lendo",
         "ano": 2025,
         "paginas": 363
     },
@@ -429,7 +429,7 @@
     {
         "nome": "o cacador de pipas",
         "autor": "Khaled Hosseini",
-        "situacao": "Quero Ler",
+        "situacao": "Abandonado",
         "ano": 2025,
         "paginas": 365
     },
@@ -455,13 +455,6 @@
         "paginas": 560
     },
     {
-        "nome": "o guia do mochileiro das galaxias",
-        "autor": "Douglas Adams",
-        "situacao": "Lendo",
-        "ano": 2025,
-        "paginas": 156
-    },
-    {
         "nome": "o oraculo da noite",
         "autor": "Sidarta Ribeiro",
         "situacao": "Abandonado",
@@ -474,5 +467,40 @@
         "situacao": "Abandonado",
         "ano": 2024,
         "paginas": 220
+    },
+    {
+        "nome": "principios básicos de análise comportamento",
+        "autor": "Márcio Borges Moreira e Carlos",
+        "situacao": "Abandonado",
+        "ano": 2024,
+        "paginas": 221
+    },
+    {
+        "nome": "amar a vinda do senhor. O combate à carreira e à fé",
+        "autor": "Miguel ma",
+        "situacao": "Abandonado",
+        "ano": 2024,
+        "paginas": 96
+    },
+    {
+        "nome": "o restaurante no fim do universo",
+        "autor": "Douglas Adams",
+        "situacao": "Lido",
+        "ano": 2025,
+        "paginas": 162
+    },
+    {
+        "nome": "introducao a programacao com python",
+        "autor": "Nilo Ney Coutinho Menezes",
+        "situacao": "Lendo",
+        "ano": 2025,
+        "paginas": 539
+    },
+    {
+        "nome": "felicidade construida",
+        "autor": "Paul Dolan",
+        "situacao": "Lendo",
+        "ano": 2025,
+        "paginas": 248
     }
 ]

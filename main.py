@@ -117,8 +117,7 @@ def listarLivrosAbandonados():
             print(f'{k:<5}{nome:<30}{autor:<20}{situacao:<15}{anoLeitura:<5}{nPaginas:<5}')
             totalLivros += 1
     print(f'*** Total de Livros: {totalLivros} ***')
-    #Passagem da quantidade de livros abandonados
-    
+    #Passagem da quantidade de livros abandonados 
 def contarLivrosAbandonados(totalLivros = 0):
     #Listar livros com formatação limitada
     totalLivros = 0

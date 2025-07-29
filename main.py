@@ -25,6 +25,14 @@ def limitarTextos(texto, limite):
 
 ###############################################################################
 #Situação dos Livros
+def menu():
+    sleep(0.3)
+    tam = 40
+    print('-' * tam)
+    print(f'{"Sistema de Controle de Leitura".center(tam)}')
+    print('-' * tam)
+    print('1 - Cadastrar Livro\n2 - Listar Livro\n3 - Excluir Livro\n4 - Estatisticas\n5 - Editar Livro\n6 - Sair do Programa')
+    print('-' * tam)
 def listarLivros():
     totalLivros = 0
     sleep(0.1)
@@ -187,14 +195,7 @@ def editarLivro():
         print('Livro não encontrado! ')
     
     print('-' * tam)
-def menu():
-    sleep(0.3)
-    tam = 40
-    print('-' * tam)
-    print(f'{"Sistema de Controle de Leitura".center(tam)}')
-    print('-' * tam)
-    print('1 - Cadastrar Livro\n2 - Listar Livro\n3 - Excluir Livro\n4 - Estatisticas\n5 - Editar Livro\n6 - Sair do Programa')
-    print('-' * tam)
+
 ##############################################################################
 
 

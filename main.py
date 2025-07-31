@@ -26,18 +26,12 @@ def limitarTextos(texto, limite):
 ###############################################################################
 #Situação dos Livros
 def cabecalhos(msg = ""):
-    tam = 40
+    tam = 60
     print('-' * tam)
     print(f"{msg.center(tam)}")
     print('-' * tam)
 def menu():
-    sleep(0.3)
-    tam = 40
-    print('-' * tam)
-    print(f'{"Sistema de Controle de Leitura".center(tam)}')
-    print('-' * tam)
     print('1 - Cadastrar Livro\n2 - Listar Livro\n3 - Excluir Livro\n4 - Estatisticas\n5 - Editar Livro\n6 - Sair do Programa')
-    print('-' * tam)
 def listarLivros():
     totalLivros = 0
     sleep(0.1)
@@ -206,11 +200,12 @@ def editarLivro():
 
 while True:
     try:
-        cabecalhos('Menu Principal')
+        cabecalhos('Sistema de Controle de Leitura')
         menu()
         op = int(input('Sua opção: '))
 
         if op == 1:
+            cabecalhos('Cadastro de livros')
             #cadastrar os livros:
             dados = {}
             dados['nome'] = input('Nome do livro: ')
@@ -240,11 +235,12 @@ while True:
                 print('Algo deu errado, não foi possível cadastrar o livro.')
         elif op == 2:
             if len(livros) == 0:
-                formatacao('Nenhum livro cadastrado! Cadastre ao menos 1 livro! ')   
+                cabecalhos('ATENÇÃO!!')
+                print('Nenhum livro cadastrado!\nCadastre ao menos 1 livro!')   
             else:
                 while True:
                     try:
-                        tam = 40
+                        cabecalhos('Listagem de Livros')
                         print('1 - Todos os Livros\n2 - Lendo\n3 - Quero Ler\n4 - Lido\n5 - Abandonados\n6 - Menu anterior')
                         subOpcao = int(input('Sua opção: '))
                         if subOpcao == 6:
@@ -262,12 +258,12 @@ while True:
                             listarLivrosAbandonados()
                         else:
                             print('Opção inválida! Selecione apenas dentre as disponiveis! ')
-                        print('-' * tam)
                     except ValueError:
                         print('⚠ Por favor, escolha uma opção válida (1 a 5). Somente números são aceitos.')
                         continue                
         elif op == 3:
                 #EXCLUSÃO DE LIVROS
+                cabecalhos('Excluir Livros')
                 listarLivros()
                 while True:
                     try:
@@ -289,11 +285,10 @@ while True:
                         print('⚠ Por favor, escolha um livro válido da lista acima!. ')
         elif op == 4:
             #Estatisticas
-            tam = 40
-            print('~' * tam)
+            
+            cabecalhos(f'Estatisticas de Leitura')
             sleep(0.3)
-            print(f'{"Estatisticas de Leitura".center(tam)}')
-            print('~' * tam)
+            
             sleep(0.1)
             print(f'2023 = {livrosPorAno(2023)}x')
             print(f'2024 = {livrosPorAno(2024)}x')
@@ -301,7 +296,7 @@ while True:
             print(f'Abandonados = {contarLivrosAbandonados()}x')
             print(f'Paginômetro = {paginometro()}')
             print(f'Média de Páginas = {mediaPaginas()}')
-            print('~' * tam)
+            
             sleep(0.1)
         elif op == 5:
             editarLivro()

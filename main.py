@@ -25,6 +25,11 @@ def limitarTextos(texto, limite):
 
 ###############################################################################
 #Situação dos Livros
+def cabecalhos(msg = ""):
+    tam = 40
+    print('-' * tam)
+    print(f"{msg.center(tam)}")
+    print('-' * tam)
 def menu():
     sleep(0.3)
     tam = 40
@@ -201,6 +206,7 @@ def editarLivro():
 
 while True:
     try:
+        cabecalhos('Menu Principal')
         menu()
         op = int(input('Sua opção: '))
 

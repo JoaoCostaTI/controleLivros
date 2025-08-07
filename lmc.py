@@ -1,99 +1,95 @@
-import pandas as pd
-
 def obter_numero(prompt):
     """Função para obter um número do usuário, tratando o formato brasileiro."""
     while True:
         try:
             texto = input(prompt)
             if not texto:
-                return None  # Retorna None se o usuário não digitar nada
-            
-            # Limpa e converte o número no formato brasileiro (ex: "1.234,56")
+                return None
             numero = float(texto.replace('.', '').replace(',', '.'))
             return numero
         except ValueError:
             print("Erro: Por favor, insira um número válido (ex: 1500,50). Tente novamente.")
 
-def main():
-    """Função principal do programa."""
-    print("--- Calculadora de Porcentagem Aplicada ---")
-    print("Preencha os pares de valores. Deixe o 'Valor Original' em branco para finalizar.\n")
+def formatar_reais(valor):
+    """Formata um número como moeda brasileira (R$)."""
+    return f"R$ {valor:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
 
-    dados = []
+def formatar_percentual(valor):
+    """Formata um número como porcentagem."""
+    return f"{valor:.2%}"
+
+def executar_um_calculo():
+    """Esta função contém toda a lógica para um único cálculo de rateio."""
+    print("\n" + "*"*65)
+    print("Iniciando novo cálculo...")
+    # 1. Obter o TETO MÁXIMO geral
+    teto_maximo_geral = obter_numero("\nPrimeiro, digite o TETO MÁXIMO (valor final total): ")
+    if teto_maximo_geral is None:
+        print("TETO MÁXIMO é obrigatório. Programa encerrado.")
+        return
+        
+    print("\nAgora, insira todos os Valores Originais. Deixe em branco para finalizar.")
+    print("-" * 40)
+
+    # 2. Obter a lista de Valores Originais
+    valores_originais = []
     contador = 1
-
     while True:
-        # Pede ao usuário o Valor Original
-        valor_original = obter_numero(f"Digite o Valor Original #{contador}: ")
-        
-        # Se o usuário deixar em branco, o loop termina
-        if valor_original is None:
+        valor = obter_numero(f"Valor Original #{contador}: ")
+        if valor is None:
             break
-        
-        # Pede ao usuário o Valor Final correspondente
-        valor_final = obter_numero(f"Digite o Valor Final   #{contador}: ")
-
-        if valor_final is None:
-            print("Valor Final não pode ser vazio. Por favor, insira o par novamente.")
-            continue
-
-        # Adiciona os valores à nossa lista de dados
-        dados.append({
-            'Valor Original (R$)': valor_original,
-            'Valor Final (R$)': valor_final
-        })
+        valores_originais.append(valor)
         contador += 1
-        print("-" * 20)
 
-    # Se nenhum dado foi inserido, encerra o programa
-    if not dados:
-        print("Nenhum dado inserido. Programa finalizado.")
+    if not valores_originais:
+        print("Nenhum valor inserido. Finalizando este cálculo.")
         return
 
-    # Cria um DataFrame (tabela) com a biblioteca pandas
-    df = pd.DataFrame(dados)
+    # --- Início dos Cálculos ---
 
-    # Calcula a coluna '% Aplicada'
-    # Adiciona uma verificação para evitar divisão por zero
-    df['% Aplicada'] = df.apply(
-        lambda row: row['Valor Final (R$)'] / row['Valor Original (R$)'] if row['Valor Original (R$)'] != 0 else 0,
-        axis=1
-    )
+    # 3. Somar os valores originais
+    soma_dos_originais = sum(valores_originais)
 
-    # Adiciona a linha de Total
-    soma_original = df['Valor Original (R$)'].sum()
-    soma_final = df['Valor Final (R$)'].sum()
-    percentual_total = soma_final / soma_original if soma_original != 0 else 0
+    # 4. Calcular o percentual de rateio único
+    percentual_rateio = teto_maximo_geral / soma_dos_originais if soma_dos_originais != 0 else 0
     
-    total_row = pd.DataFrame({
-        'Valor Original (R$)': [soma_original],
-        '% Aplicada': [percentual_total],
-        'Valor Final (R$)': [soma_final]
-    }, index=['TOTAL'])
+    # --- Impressão dos Resultados ---
+    print("\n" + "=" * 65)
+    print("--- Resultado do Rateio ---")
+    print(f"Soma dos Valores Originais (Base de Cálculo): {formatar_reais(soma_dos_originais)}")
+    print(f"TETO MÁXIMO definido (Alvo): {formatar_reais(teto_maximo_geral)}")
+    print(f"Percentual de Rateio Único Calculado: {formatar_percentual(percentual_rateio)}")
+    print("-" * 65)
     
-    # Reorganiza as colunas para corresponder à sua imagem
-    df = df[['Valor Original (R$)', '% Aplicada', 'Valor Final (R$)']]
+    # Cabeçalho da tabela
+    print(f"{'Valor Original':<25} {'% Aplicada':<20} {'Valor Final':<20}")
+    print("-" * 65)
 
-    # Imprime o resultado formatado
-    print("\n--- Resultado Final ---")
-    
-    # Imprime a tabela principal
-    print(df.to_string(formatters={
-        'Valor Original (R$)': 'R$ {:,.2f}'.format,
-        '% Aplicada': '{:,.2%}'.format,
-        'Valor Final (R$)': 'R$ {:,.2f}'.format
-    }))
-    
-    print("-" * 65) # Linha separadora
-    
-    # Imprime a linha de totais
-    print(total_row.to_string(formatters={
-        'Valor Original (R$)': 'R$ {:,.2f}'.format,
-        '% Aplicada': '{:,.2%}'.format,
-        'Valor Final (R$)': 'R$ {:,.2f}'.format
-    }, header=False)) # 'header=False' para não repetir o cabeçalho
+    soma_final_verificacao = 0
+    # Calcula e imprime cada linha
+    for valor in valores_originais:
+        valor_final_item = valor * percentual_rateio
+        soma_final_verificacao += valor_final_item
+        print(f"{formatar_reais(valor):<25} {formatar_percentual(percentual_rateio):<20} {formatar_reais(valor_final_item):<20}")
+
+    print("=" * 65)
+    # Imprime a linha de totais para verificação
+    print(f"{formatar_reais(soma_dos_originais):<25} {'':<20} {formatar_reais(soma_final_verificacao):<20}")
 
 
-# Executa a função principal quando o script é rodado
+def main():
+    """Função principal que controla o loop do programa."""
+    print("--- Calculadora de Rateio Proporcional com Teto ---")
+    
+    while True:
+        executar_um_calculo()
+        
+        proximo = input("\nDeseja realizar um novo cálculo? (s/n): ").lower()
+        if proximo != 's':
+            break
+            
+    print("\nObrigado por usar a calculadora. Até mais!")
+
+
 if __name__ == "__main__":
     main()

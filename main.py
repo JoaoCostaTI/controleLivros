@@ -39,20 +39,20 @@ def listarLivros(situacao="Lido"):
 
     sleep(0.1)
     #Titulo das colunas
-    print(f'{"Nº":<5}{"Nome":<30}{"Autor(a)":<20}{"Situação":<15}{"Ano":<5}{"Nº Páginas":<5}')
-    print('-' * 80)
+    print(f'{"Nº":<5}{"Nome":<25}{"Autor(a)":<20}{"Situação":<12}{"Ano":<5}{"NP":<5}')
+    print('-' * 71)
         #Listar livros com formatação limitada
     for k, livro in enumerate(livros, start=1):
         if livro["situacao"] == sit:
-            nome = limitarTextos(livro['nome'], 30)
+            nome = limitarTextos(livro['nome'], 25)
             autor = limitarTextos(livro['autor'], 20)
-            situacao = limitarTextos(livro['situacao'], 15)
+            situacao = limitarTextos(livro['situacao'], 12)
             anoLeitura = livro['ano']
             nPaginas = livro["paginas"]
-            print(f'{k:<5}{nome:<30}{autor:<20}{situacao:<15}{anoLeitura:<5}{nPaginas:<5}')
+            print(f'{k:<5}{nome:<25}{autor:<20}{situacao:<12}{anoLeitura:<5}{nPaginas:<5}')
             totalLivros += 1
     print(f'*** Total de Livros: {totalLivros} ***')
-    print('-' * 80)  
+    print('-' * 71)  
  
 def contarLivrosAbandonados(totalLivros = 0):
     #Listar livros com formatação limitada

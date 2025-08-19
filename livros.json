@@ -366,7 +366,7 @@
     {
         "nome": "beren e luthien",
         "autor": "J. R. R. Tolkien",
-        "situacao": "Lendo",
+        "situacao": "Lido",
         "ano": 2025,
         "paginas": 363
     },
@@ -436,7 +436,7 @@
     {
         "nome": "confissoes (santo agostinho)",
         "autor": "Santo Agostinho",
-        "situacao": "Quero Ler",
+        "situacao": "Lendo",
         "ano": 2025,
         "paginas": 238
     },
@@ -499,8 +499,29 @@
     {
         "nome": "felicidade construida",
         "autor": "Paul Dolan",
-        "situacao": "Lendo",
+        "situacao": "Lido",
         "ano": 2025,
         "paginas": 248
+    },
+    {
+        "nome": "noites brancas",
+        "autor": "Fiódor Dostoiévski",
+        "situacao": "Lido",
+        "ano": 2025,
+        "paginas": 85
+    },
+    {
+        "nome": "a morte de ivan ilitch",
+        "autor": "Lev Tolstói",
+        "situacao": "Lido",
+        "ano": 2025,
+        "paginas": 77
+    },
+    {
+        "nome": "harry potter e a crianca amaldicoada",
+        "autor": "John Tiffany",
+        "situacao": "Lido",
+        "ano": 2025,
+        "paginas": 351
     }
 ]

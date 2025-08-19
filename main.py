@@ -32,80 +32,26 @@ def cabecalhos(msg = ""):
     print('-' * tam)
 def menu():
     print('1 - Cadastrar Livro\n2 - Listar Livro\n3 - Excluir Livro\n4 - Estatisticas\n5 - Editar Livro\n6 - Sair do Programa')
-def listarLivros():
+def listarLivros(situacao=""):
+    
     totalLivros = 0
+    sit = situacao
     sleep(0.1)
     #Titulo das colunas
     print(f'{"Nº":<5}{"Nome":<30}{"Autor(a)":<20}{"Situação":<15}{"Ano":<5}{"Nº Páginas":<5}')
     print('-' * 80)
         #Listar livros com formatação limitada
     for k, livro in enumerate(livros, start=1):
-        nome = limitarTextos(livro['nome'], 30)
-        autor = limitarTextos(livro['autor'], 20)
-        situacao = limitarTextos(livro['situacao'], 15)
-        anoLeitura = livro['ano']
-        nPaginas = livro["paginas"]
-        print(f'{k:<5}{nome:<30}{autor:<20}{situacao:<15}{anoLeitura:<5}{nPaginas:<5}')
-        totalLivros += 1
-    print(f'*** Total de Livros: {totalLivros} ***')
-    print('-' * 80)
-def listarLivrosLendo():
-    sleep(0.1)
-    totalLivros = 0
-    #Titulo das colunas
-    print(f'{"Nº":<5}{"Nome":<30}{"Autor(a)":<20}{"Situação":<15}{"Ano":<5}{"Nº Páginas":<5}')
-    print('-' * 80)
-    #Listar livros com formatação limitada
-    for k, livro in enumerate(livros, start=1):
-        if livro['situacao'] == 'Lendo':
+        if livro["situacao"] == sit:
             nome = limitarTextos(livro['nome'], 30)
             autor = limitarTextos(livro['autor'], 20)
             situacao = limitarTextos(livro['situacao'], 15)
             anoLeitura = livro['ano']
             nPaginas = livro["paginas"]
-
             print(f'{k:<5}{nome:<30}{autor:<20}{situacao:<15}{anoLeitura:<5}{nPaginas:<5}')
             totalLivros += 1
     print(f'*** Total de Livros: {totalLivros} ***')
-    print('~' * 80)
-def listarLivrosQueroLer():
-    sleep(0.1)
-    totalLivros = 0
-    #Titulo das colunas
-    print(f'{"Nº":<5}{"Nome":<30}{"Autor(a)":<20}{"Situação":<15}{"Ano":<5}{"NºPáginas":<5}')
-    print('-' * 80)
-            #Listar livros com formatação limitada
-    for k, livro in enumerate(livros, start=1):
-        if livro['situacao'] == 'Quero Ler':
-            nome = limitarTextos(livro['nome'], 30)
-            autor = limitarTextos(livro['autor'], 20)
-            situacao = limitarTextos(livro['situacao'], 15)
-            anoLeitura = livro['ano']
-            nPaginas = livro["paginas"]
-
-            print(f'{k:<5}{nome:<30}{autor:<20}{situacao:<15}{anoLeitura:<5}{nPaginas:<5}')
-            totalLivros += 1
-    print(f'*** Total de Livros: {totalLivros} ***')
-    print('~' * 80)
-def listarLivrosLido():
-    sleep(0.1)
-    totalLivros = 0
-    #Titulo das colunas
-    print(f'{"Nº":<5}{"Nome":<30}{"Autor(a)":<20}{"Situação":<15}{"Ano":<5}{"Nº Páginas":<5}')
-    print('-' * 80)
-    #Listar livros com formatação limitada
-    for k, livro in enumerate(livros, start=1):
-        if livro['situacao'] == 'Lido':
-            nome = limitarTextos(livro['nome'], 30)
-            autor = limitarTextos(livro['autor'], 20)
-            situacao = limitarTextos(livro['situacao'], 15)
-            anoLeitura = livro['ano']
-            nPaginas = livro["paginas"]
-
-            print(f'{k:<5}{nome:<30}{autor:<20}{situacao:<15}{anoLeitura:<5}{nPaginas:<5}')
-            totalLivros += 1
-    print(f'*** Total de Livros: {totalLivros} ***')
-    print('~' * 80)   
+    print('-' * 80)  
 def listarLivrosAbandonados():
     sleep(0.1)
     totalLivros = 0
@@ -247,13 +193,14 @@ while True:
                             print('Voltando ao menu anterior...')
                             break
                         elif subOpcao == 1:
-                            listarLivros()
+                            print('Sendo alterado...')
+                            listarLivros("")
                         elif subOpcao == 2:
-                            listarLivrosLendo()
+                            listarLivros("Lendo")
                         elif subOpcao == 3:
-                            listarLivrosQueroLer()
+                            listarLivros("Quero Ler")
                         elif subOpcao == 4:
-                            listarLivrosLido()
+                            listarLivros("Lido")
                         elif subOpcao == 5:
                             listarLivrosAbandonados()
                         else:

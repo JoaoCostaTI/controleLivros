@@ -32,10 +32,11 @@ def cabecalhos(msg = ""):
     print('-' * tam)
 def menu():
     print('1 - Cadastrar Livro\n2 - Listar Livro\n3 - Excluir Livro\n4 - Estatisticas\n5 - Editar Livro\n6 - Sair do Programa')
-def listarLivros(situacao=""):
-    
+def listarLivros(situacao="Lido"):
     totalLivros = 0
+
     sit = situacao
+
     sleep(0.1)
     #Titulo das colunas
     print(f'{"Nº":<5}{"Nome":<30}{"Autor(a)":<20}{"Situação":<15}{"Ano":<5}{"Nº Páginas":<5}')
@@ -52,25 +53,7 @@ def listarLivros(situacao=""):
             totalLivros += 1
     print(f'*** Total de Livros: {totalLivros} ***')
     print('-' * 80)  
-def listarLivrosAbandonados():
-    sleep(0.1)
-    totalLivros = 0
-    #Titulo das colunas
-    print(f'{"Nº":<5}{"Nome":<30}{"Autor(a)":<20}{"Situação":<15}{"Ano":<5}{"Nº Páginas":<5}')
-    print('-' * 80)
-    #Listar livros com formatação limitada
-    for k, livro in enumerate(livros, start=1):
-        if livro['situacao'] == 'Abandonado':
-            nome = limitarTextos(livro['nome'], 30)
-            autor = limitarTextos(livro['autor'], 20)
-            situacao = limitarTextos(livro['situacao'], 15)
-            anoLeitura = livro['ano']
-            nPaginas = livro["paginas"]
-
-            print(f'{k:<5}{nome:<30}{autor:<20}{situacao:<15}{anoLeitura:<5}{nPaginas:<5}')
-            totalLivros += 1
-    print(f'*** Total de Livros: {totalLivros} ***')
-    #Passagem da quantidade de livros abandonados 
+ 
 def contarLivrosAbandonados(totalLivros = 0):
     #Listar livros com formatação limitada
     totalLivros = 0
@@ -78,13 +61,27 @@ def contarLivrosAbandonados(totalLivros = 0):
         if livro['situacao'] == 'Abandonado':
             totalLivros += 1
     return totalLivros
-def livrosPorAno(anoReferencia):
+def livrosPorAno():
     #Listar livros com formatação limitada
-    qtdLivros = 0
-    for k, livro in enumerate(livros, start=1):
-        if livro['ano'] == anoReferencia and livro['situacao'] == 'Lido':
-            qtdLivros += 1
-    return qtdLivros
+
+    ano = []
+
+    for r in livros:
+        if r["ano"] not in ano:
+            ano.append(r["ano"])
+    ano.sort()
+
+    for k, a in enumerate(ano):
+        anoProcurado = ano[k]
+        contador = 0
+
+        for livro in livros:
+            if livro["ano"] == anoProcurado and livro['situacao'] == "Lido":
+                contador += 1
+        
+        print(f'- {a} = {contador}x')
+
+
 def preencherJson():
      with open('livros.json', 'w', encoding='utf-8') as arquivo:
         json.dump(livros, arquivo, ensure_ascii=False, indent=4)
@@ -187,22 +184,19 @@ while True:
                 while True:
                     try:
                         cabecalhos('Listagem de Livros')
-                        print('1 - Todos os Livros\n2 - Lendo\n3 - Quero Ler\n4 - Lido\n5 - Abandonados\n6 - Menu anterior')
+                        print('1 - Lendo\n2 - Quero Ler\n3 - Lido\n4 - Abandonados\n5 - Menu anterior')
                         subOpcao = int(input('Sua opção: '))
-                        if subOpcao == 6:
+                        if subOpcao == 5:
                             print('Voltando ao menu anterior...')
                             break
                         elif subOpcao == 1:
-                            print('Sendo alterado...')
-                            listarLivros("")
-                        elif subOpcao == 2:
                             listarLivros("Lendo")
-                        elif subOpcao == 3:
+                        elif subOpcao == 2:
                             listarLivros("Quero Ler")
-                        elif subOpcao == 4:
+                        elif subOpcao == 3:
                             listarLivros("Lido")
-                        elif subOpcao == 5:
-                            listarLivrosAbandonados()
+                        elif subOpcao == 4:
+                            listarLivros("Abandonado")
                         else:
                             print('Opção inválida! Selecione apenas dentre as disponiveis! ')
                     except ValueError:
@@ -235,14 +229,14 @@ while True:
             
             cabecalhos(f'Estatisticas de Leitura')
             sleep(0.3)
+
+            livrosPorAno()
             
             sleep(0.1)
-            print(f'2023 = {livrosPorAno(2023)}x')
-            print(f'2024 = {livrosPorAno(2024)}x')
-            print(f'2025 = {livrosPorAno(2025)}x')
-            print(f'Abandonados = {contarLivrosAbandonados()}x')
-            print(f'Paginômetro = {paginometro()}')
-            print(f'Média de Páginas = {mediaPaginas()}')
+            
+            print(f'- Abandonados = {contarLivrosAbandonados()}x')
+            print(f'- Paginômetro = {paginometro()}')
+            print(f'- Média de Páginas = {mediaPaginas()}')
             
             sleep(0.1)
         elif op == 5:

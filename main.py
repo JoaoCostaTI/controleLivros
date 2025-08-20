@@ -94,11 +94,13 @@ def paginometro():
 def mediaPaginas():
     qtdPaginas = 0
     qtdLivros = 0
+    totalMediaPaginas = 0
     for livro in livros:
         if livro['situacao'] == 'Lendo' or livro['situacao'] == 'Lido':
             qtdLivros += 1
             qtdPaginas += livro['paginas']
-    return int(qtdPaginas / qtdLivros)
+    totalMediaPaginas = qtdPaginas/qtdLivros
+    return round(totalMediaPaginas)
 def editarLivro():
     tam = 40
     print('-' * tam)

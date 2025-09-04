@@ -1,7 +1,537 @@
-try:
-    # Código que pode gerar um erro
-    numero = int(input("Digite um número: "))
-    print(f"Você digitou {numero}")
-except:
-    # Código executado se ocorrer qualquer erro
-    print("Ocorreu um erro!")
+base =[
+    {
+        "nome": "bom dia espirito santo",
+        "autor": "Benny Hinn",
+        "situacao": "Lido",
+        "ano": 2023,
+        "paginas": 237
+    },
+    {
+        "nome": "o monge e o executivo",
+        "autor": "James C. Hunter",
+        "situacao": "Lido",
+        "ano": 2023,
+        "paginas": 144
+    },
+    {
+        "nome": "inteligencia socioemocional",
+        "autor": "Augusto Cury",
+        "situacao": "Lido",
+        "ano": 2023,
+        "paginas": 143
+    },
+    {
+        "nome": "manual de persuasao do fbi",
+        "autor": "Jack Schafer",
+        "situacao": "Lido",
+        "ano": 2023,
+        "paginas": 256
+    },
+    {
+        "nome": "como experimentar o amor e o perdao de deus",
+        "autor": "Bill Bright",
+        "situacao": "Lido",
+        "ano": 2023,
+        "paginas": 47
+    },
+    {
+        "nome": "de genio e louco todos tem um pouco",
+        "autor": "Augusto Cury",
+        "situacao": "Lido",
+        "ano": 2023,
+        "paginas": 208
+    },
+    {
+        "nome": "andando com o tanque vazio",
+        "autor": "Wayne Cordeiro",
+        "situacao": "Lido",
+        "ano": 2023,
+        "paginas": 190
+    },
+    {
+        "nome": "o hobbit",
+        "autor": "J. R. R. Tolkien",
+        "situacao": "Lido",
+        "ano": 2025,
+        "paginas": 336
+    },
+    {
+        "nome": "a arte da guerra",
+        "autor": "Sun Tzu",
+        "situacao": "Lido",
+        "ano": 2024,
+        "paginas": 80
+    },
+    {
+        "nome": "a coragem de ser imperfeito",
+        "autor": "Brené Brown",
+        "situacao": "Lido",
+        "ano": 2024,
+        "paginas": 208
+    },
+    {
+        "nome": "em busca de sentido",
+        "autor": "Viktor Frankl",
+        "situacao": "Lido",
+        "ano": 2024,
+        "paginas": 184
+    },
+    {
+        "nome": "o menino do pijama listrado",
+        "autor": "John Boyne",
+        "situacao": "Lido",
+        "ano": 2024,
+        "paginas": 190
+    },
+    {
+        "nome": "fora de serie - outliers",
+        "autor": "Malcolm Gladwell",
+        "situacao": "Lido",
+        "ano": 2024,
+        "paginas": 284
+    },
+    {
+        "nome": "cachorro velho",
+        "autor": "Teresa Cárdenas",
+        "situacao": "Lido",
+        "ano": 2024,
+        "paginas": 142
+    },
+    {
+        "nome": "memorias do subsolo",
+        "autor": "Fiódor Dostoiévski",
+        "situacao": "Lido",
+        "ano": 2024,
+        "paginas": 152
+    },
+    {
+        "nome": "cartas de um diabo a seu aprendiz",
+        "autor": "C. S. Lewis",
+        "situacao": "Lido",
+        "ano": 2024,
+        "paginas": 208
+    },
+    {
+        "nome": "aprender a viver",
+        "autor": "Luc Ferry",
+        "situacao": "Lido",
+        "ano": 2024,
+        "paginas": 239
+    },
+    {
+        "nome": "essencialismo",
+        "autor": "Greg McKeown",
+        "situacao": "Lido",
+        "ano": 2024,
+        "paginas": 272
+    },
+    {
+        "nome": "o homem mais rico da babilonia",
+        "autor": "George S. Clason",
+        "situacao": "Lido",
+        "ano": 2024,
+        "paginas": 157
+    },
+    {
+        "nome": "o poder do habito",
+        "autor": "Charles Duhigg",
+        "situacao": "Lido",
+        "ano": 2024,
+        "paginas": 407
+    },
+    {
+        "nome": "o colecionador de lagrimas",
+        "autor": "Augusto Cury",
+        "situacao": "Lido",
+        "ano": 2024,
+        "paginas": 375
+    },
+    {
+        "nome": "onze licoes sobre a virtude",
+        "autor": "Santo Tomás de Aquino",
+        "situacao": "Lido",
+        "ano": 2024,
+        "paginas": 116
+    },
+    {
+        "nome": "a vida intelectual",
+        "autor": "A.-D. Sertillanges",
+        "situacao": "Lido",
+        "ano": 2024,
+        "paginas": 224
+    },
+    {
+        "nome": "habitos atomicos",
+        "autor": "James Clear",
+        "situacao": "Lido",
+        "ano": 2024,
+        "paginas": 320
+    },
+    {
+        "nome": "a sociedade do anel",
+        "autor": "J. R. R. Tolkien",
+        "situacao": "Lido",
+        "ano": 2024,
+        "paginas": 604
+    },
+    {
+        "nome": "as duas torres",
+        "autor": "J. R. R. Tolkien",
+        "situacao": "Lido",
+        "ano": 2025,
+        "paginas": 464
+    },
+    {
+        "nome": "o retorno do rei",
+        "autor": "J. R. R. Tolkien",
+        "situacao": "Lido",
+        "ano": 2024,
+        "paginas": 608
+    },
+    {
+        "nome": "ego transformado",
+        "autor": "Timothy Keller",
+        "situacao": "Lido",
+        "ano": 2025,
+        "paginas": 48
+    },
+    {
+        "nome": "trabalho focado",
+        "autor": "Cal Newport",
+        "situacao": "Lido",
+        "ano": 2025,
+        "paginas": 304
+    },
+    {
+        "nome": "as ideias tem consequencias",
+        "autor": "Richard M. Weaver",
+        "situacao": "Lido",
+        "ano": 2025,
+        "paginas": 208
+    },
+    {
+        "nome": "a educacao da vontade",
+        "autor": "Jules Payot",
+        "situacao": "Lido",
+        "ano": 2025,
+        "paginas": 240
+    },
+    {
+        "nome": "seja egoista com sua carreira",
+        "autor": "Luciano Responde",
+        "situacao": "Lido",
+        "ano": 2025,
+        "paginas": 208
+    },
+    {
+        "nome": "como evitar preocupacoes e comecar a viver",
+        "autor": "Dale Carnegie",
+        "situacao": "Lido",
+        "ano": 2025,
+        "paginas": 320
+    },
+    {
+        "nome": "harry potter e a pedra filosofal",
+        "autor": "J.K. Rowling",
+        "situacao": "Lido",
+        "ano": 2025,
+        "paginas": 208
+    },
+    {
+        "nome": "harry potter e a camara secreta",
+        "autor": "J.K. Rowling",
+        "situacao": "Lido",
+        "ano": 2025,
+        "paginas": 224
+    },
+    {
+        "nome": "harry potter e o prisioneiro de azkaban",
+        "autor": "J.K. Rowling",
+        "situacao": "Lido",
+        "ano": 2025,
+        "paginas": 288
+    },
+    {
+        "nome": "harry potter e o calice de fogo",
+        "autor": "J.K. Rowling",
+        "situacao": "Lido",
+        "ano": 2025,
+        "paginas": 480
+    },
+    {
+        "nome": "harry potter e a ordem da fenix",
+        "autor": "J.K. Rowling",
+        "situacao": "Lido",
+        "ano": 2025,
+        "paginas": 640
+    },
+    {
+        "nome": "harry potter e o enigma do principe",
+        "autor": "J.K. Rowling",
+        "situacao": "Lido",
+        "ano": 2025,
+        "paginas": 432
+    },
+    {
+        "nome": "harry potter e as reliquias da morte",
+        "autor": "J.K. Rowling",
+        "situacao": "Lido",
+        "ano": 2025,
+        "paginas": 512
+    },
+    {
+        "nome": "o silmarillion",
+        "autor": "J. R. R. Tolkien",
+        "situacao": "Lido",
+        "ano": 2025,
+        "paginas": 496
+    },
+    {
+        "nome": "roverando",
+        "autor": "J. R. R. Tolkien",
+        "situacao": "Lido",
+        "ano": 2025,
+        "paginas": 160
+    },
+    {
+        "nome": "mestre giles d'aldeia",
+        "autor": "J. R. R. Tolkien",
+        "situacao": "Lido",
+        "ano": 2025,
+        "paginas": 144
+    },
+    {
+        "nome": "entendendo algoritmos",
+        "autor": "Aditya Y. Bhargava",
+        "situacao": "Lido",
+        "ano": 2025,
+        "paginas": 264
+    },
+    {
+        "nome": "minimalismo digital",
+        "autor": "Cal Newport",
+        "situacao": "Lido",
+        "ano": 2024,
+        "paginas": 304
+    },
+    {
+        "nome": "o velho e o mar",
+        "autor": "Ernest Hemingway",
+        "situacao": "Lido",
+        "ano": 2023,
+        "paginas": 111
+    },
+    {
+        "nome": "vencendo a ansiedade e a preocupacao com a terapia cognitivo-comportamental",
+        "autor": "Aaron T. Beck",
+        "situacao": "Lido",
+        "ano": 2024,
+        "paginas": 296
+    },
+    {
+        "nome": "como falar corretamente e sem inibicoes",
+        "autor": "Reinaldo Polito",
+        "situacao": "Lido",
+        "ano": 2024,
+        "paginas": 240
+    },
+    {
+        "nome": "campo de batalha da mente",
+        "autor": "Joyce Meyer",
+        "situacao": "Lido",
+        "ano": 2024,
+        "paginas": 272
+    },
+    {
+        "nome": "o guia do mochileiro das galaxias",
+        "autor": "Douglas Adams",
+        "situacao": "Lido",
+        "ano": 2025,
+        "paginas": 156
+    },
+    {
+        "nome": "a queda de numeror",
+        "autor": "J. R. R. Tolkien",
+        "situacao": "Quero Ler",
+        "ano": 2025,
+        "paginas": 344
+    },
+    {
+        "nome": "a queda de gondolin",
+        "autor": "J. R. R. Tolkien",
+        "situacao": "Quero Ler",
+        "ano": 2025,
+        "paginas": 283
+    },
+    {
+        "nome": "beren e luthien",
+        "autor": "J. R. R. Tolkien",
+        "situacao": "Lido",
+        "ano": 2025,
+        "paginas": 363
+    },
+    {
+        "nome": "contos inacabados",
+        "autor": "J. R. R. Tolkien",
+        "situacao": "Quero Ler",
+        "ano": 2025,
+        "paginas": 622
+    },
+    {
+        "nome": "a guerra dos tronos",
+        "autor": "George R. R. Martin",
+        "situacao": "Quero Ler",
+        "ano": 2025,
+        "paginas": 591
+    },
+    {
+        "nome": "a furia dos reis",
+        "autor": "George R. R. Martin",
+        "situacao": "Quero Ler",
+        "ano": 2025,
+        "paginas": 653
+    },
+    {
+        "nome": "a tormenta de espadas",
+        "autor": "George R. R. Martin",
+        "situacao": "Quero Ler",
+        "ano": 2025,
+        "paginas": 880
+    },
+    {
+        "nome": "o festim dos corvos",
+        "autor": "George R. R. Martin",
+        "situacao": "Quero Ler",
+        "ano": 2025,
+        "paginas": 641
+    },
+    {
+        "nome": "a danca dos dragoes",
+        "autor": "George R. R. Martin",
+        "situacao": "Quero Ler",
+        "ano": 2025,
+        "paginas": 864
+    },
+    {
+        "nome": "as cronicas de narnia",
+        "autor": "C. S. Lewis",
+        "situacao": "Quero Ler",
+        "ano": 2025,
+        "paginas": 524
+    },
+    {
+        "nome": "crime e castigo",
+        "autor": "Fiódor Dostoiévski",
+        "situacao": "Quero Ler",
+        "ano": 2025,
+        "paginas": 591
+    },
+    {
+        "nome": "o cacador de pipas",
+        "autor": "Khaled Hosseini",
+        "situacao": "Abandonado",
+        "ano": 2025,
+        "paginas": 365
+    },
+    {
+        "nome": "confissoes (santo agostinho)",
+        "autor": "Santo Agostinho",
+        "situacao": "Lendo",
+        "ano": 2025,
+        "paginas": 238
+    },
+    {
+        "nome": "o homem eterno",
+        "autor": "G. K. Chesterton",
+        "situacao": "Quero Ler",
+        "ano": 2025,
+        "paginas": 326
+    },
+    {
+        "nome": "o mundo de sofia",
+        "autor": "Jostein Gaarder",
+        "situacao": "Lido",
+        "ano": 2024,
+        "paginas": 560
+    },
+    {
+        "nome": "o oraculo da noite",
+        "autor": "Sidarta Ribeiro",
+        "situacao": "Abandonado",
+        "ano": 2024,
+        "paginas": 464
+    },
+    {
+        "nome": "sobre o behaviorismo",
+        "autor": "B. F. Skinner",
+        "situacao": "Abandonado",
+        "ano": 2024,
+        "paginas": 220
+    },
+    {
+        "nome": "principios básicos de análise comportamento",
+        "autor": "Márcio Borges Moreira e Carlos",
+        "situacao": "Abandonado",
+        "ano": 2024,
+        "paginas": 221
+    },
+    {
+        "nome": "amar a vinda do senhor. O combate à carreira e à fé",
+        "autor": "Miguel ma",
+        "situacao": "Abandonado",
+        "ano": 2024,
+        "paginas": 96
+    },
+    {
+        "nome": "o restaurante no fim do universo",
+        "autor": "Douglas Adams",
+        "situacao": "Lido",
+        "ano": 2025,
+        "paginas": 162
+    },
+    {
+        "nome": "introducao a programacao com python",
+        "autor": "Nilo Ney Coutinho Menezes",
+        "situacao": "Lendo",
+        "ano": 2025,
+        "paginas": 539
+    },
+    {
+        "nome": "felicidade construida",
+        "autor": "Paul Dolan",
+        "situacao": "Lido",
+        "ano": 2025,
+        "paginas": 248
+    },
+    {
+        "nome": "noites brancas",
+        "autor": "Fiódor Dostoiévski",
+        "situacao": "Lido",
+        "ano": 2025,
+        "paginas": 85
+    },
+    {
+        "nome": "a morte de ivan ilitch",
+        "autor": "Lev Tolstói",
+        "situacao": "Lido",
+        "ano": 2025,
+        "paginas": 77
+    },
+    {
+        "nome": "harry potter e a crianca amaldicoada",
+        "autor": "John Tiffany",
+        "situacao": "Lido",
+        "ano": 2025,
+        "paginas": 351
+    }
+]
+
+
+ano = []
+
+for k, r in enumerate(base):
+    if r["ano"] not in ano:
+        ano.append(r["ano"])
+    ano.sort()
+
+print(ano)

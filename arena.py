@@ -1,9 +1,5 @@
-texto = "Alguma coisa escrita aqui para encher linguiça atoa e ver se entendi o que quero"
+from datetime import datetime
 
-def limitarTexto (texto, limite):
-    if len(texto) > limite:
-        return texto[:limite -3] + "..."
-    return texto
+data = datetime.now()
 
-
-print(limitarTexto(texto, 28))
+print(data)

@@ -31,3 +31,21 @@ def converter_data_para_usuario(data):
         return data_obj.strftime('%d/%m/%Y')
     except ValueError:
         return None
+    
+CABECALHOS = ('HELVICA', 14, 'bold')
+
+COMBO_GENERO = ["Biografia / Memórias",
+    "Clássicos",
+    "Desenvolvimento Pessoal",
+    "Fantasia",
+    "Ficção Científica",
+    "Ficção Histórica",
+    "Filosofia / Sociologia",
+    "História",
+    "Mistério / Suspense",
+    "Religião / Espiritualidade",
+    "Romance",
+    "Tecnologia / Computação",
+    "Terror / Horror"]
+
+COMBO_STATUS = ['Lendo', 'Lido', 'Quero Ler']

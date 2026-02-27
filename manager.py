@@ -21,7 +21,6 @@ class Gerenciador:
             return True
         except Exception as e:
             print(e)
-            print('chegou aq')
             return False
         
     def criar_tabela(self):

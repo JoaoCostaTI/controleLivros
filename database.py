@@ -29,6 +29,5 @@ class Database:
                 cursor.execute(sql, parametros)
                 connection.commit()
             except Exception as e:
-                print('chegou aq no Banco')
                 connection.rollback()
                 raise e

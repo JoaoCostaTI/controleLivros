@@ -23,5 +23,6 @@ class Gerenciador:
             print(e)
             return False
         
-    def criar_tabela(self):
-        self.db.criar_tabela_livros()
+    def criar_tabela_livros(self):
+        self.db.criar_tabela()
+

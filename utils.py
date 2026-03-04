@@ -49,3 +49,4 @@ COMBO_GENERO = ["Biografia / Memórias",
     "Terror / Horror"]
 
 COMBO_STATUS = ['Lendo', 'Lido', 'Quero Ler']
+

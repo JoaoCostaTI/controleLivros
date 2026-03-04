@@ -1,17 +1,17 @@
 
 class Livro:
-    def __init__(self, titulo, autor, genero, status, nota):
+    def __init__(self, titulo, autor,paginas, genero, status):
         self.titulo = titulo
         self.autor = autor
+        self.paginas = paginas
         self.genero = genero
         self.status = status
-        self.nota = nota
-
+        
     def __repr__(self):
         return f'''
 Titulo:   {self.titulo}
 Autor(a): {self.autor}
+Páginas:  {self.paginas}
 Genero:   {self.genero}
 Status:   {self.status}
-Nota:     {self.nota}
 '''

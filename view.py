@@ -71,10 +71,11 @@ frame_estatisticas = ttk.Frame(notebook)
 #Adicionando a Frame na interface
 notebook.add(frame_add_livro, text='Novo Livro')
 notebook.add(frame_minha_estante, text='Minha Estante')
-note
+notebook.add(frame_estatisticas, text='Estatísticas')
 
 #Funções para preencher as Frames
 montar_add_livro(frame_add_livro)
 montar_minha_estante(frame_minha_estante)
+mon
 
 raiz.mainloop()

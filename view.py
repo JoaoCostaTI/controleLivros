@@ -52,6 +52,10 @@ def montar_minha_estante(frame_pai):
     minha_estante = MinhaEstante(frame_pai)
     minha_estante.pack()
 
+def montar_estatisticas(frame_pai):
+    ttk.Label(frame_pai, text='Estatisticas', font=CABECALHOS).pack()
+
+
 raiz = tk.Tk()
 raiz.geometry('700x500')
 
@@ -62,10 +66,12 @@ notebook.pack(fill='both', expand=True, padx=5, pady=5)
 #Frames com as páginas
 frame_add_livro = ttk.Frame(notebook)
 frame_minha_estante = ttk.Frame(notebook)
+frame_estatisticas = ttk.Frame(notebook)
 
 #Adicionando a Frame na interface
 notebook.add(frame_add_livro, text='Novo Livro')
 notebook.add(frame_minha_estante, text='Minha Estante')
+note
 
 #Funções para preencher as Frames
 montar_add_livro(frame_add_livro)

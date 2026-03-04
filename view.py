@@ -39,6 +39,39 @@ class AdicionarLivro(ttk.Frame):
 class MinhaEstante(ttk.Frame):
     def __init__(self, master = None, *args, **kwargs):
         super().__init__(master, *args, **kwargs)
+
+class Estatisticas(ttk.Frame):
+    def __init__(self, master = None, *args, **kwargs):
+        super().__init__(master, *args, **kwargs)
+
+        self.card_estatisticas()
+        self.card_livros_lidos()
+        self.card_top_genero()
+
+
+    def card_estatisticas(self):
+        card = ttk.Frame(self, borderwidth=5, relief='solid')
+        card.grid(row=0, column=0)
+        titulo = ttk.Label(card, text='Paginômetro')
+        titulo.pack()
+        total_paginas =  ttk.Label(card, text='4500')
+        total_paginas.pack()
+    
+    def card_livros_lidos(self):
+        card = ttk.Frame(self, borderwidth=5, relief='solid')
+        card.grid(row=0, column=1)
+        titulo = ttk.Label(card, text='Livros Lidos')
+        titulo.pack()
+        qtd_livros = ttk.Label(card, text='12')
+        qtd_livros.pack()
+
+    def card_top_genero(self):
+        card = ttk.Frame(self, borderwidth=5, relief='solid')
+        card.grid(row=0, column=2)
+        titulo = ttk.Label(card, text='Top Gênero')
+        titulo.pack()
+        genero = ttk.Label(card, text='Fantasia')
+        genero.pack()
         
 
 #Funções para montagem das interfaces
@@ -54,6 +87,8 @@ def montar_minha_estante(frame_pai):
 
 def montar_estatisticas(frame_pai):
     ttk.Label(frame_pai, text='Estatisticas', font=CABECALHOS).pack()
+    estatisticas = Estatisticas(frame_pai)
+    estatisticas.pack(fill='both', expand=True)
 
 
 raiz = tk.Tk()
@@ -76,6 +111,6 @@ notebook.add(frame_estatisticas, text='Estatísticas')
 #Funções para preencher as Frames
 montar_add_livro(frame_add_livro)
 montar_minha_estante(frame_minha_estante)
-mon
+montar_estatisticas(frame_estatisticas)
 
 raiz.mainloop()

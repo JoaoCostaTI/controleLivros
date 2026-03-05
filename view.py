@@ -1,7 +1,12 @@
 import tkinter as tk
-from tkinter import ttk
+from tkinter import ttk, messagebox
 from utils import *
 from models import Livro
+from manager import Gerenciador
+from datetime import date
+
+
+gerente = Gerenciador()
 
 class AdicionarLivro(ttk.Frame):
     def __init__(self, master = None, *args, **kwargs):
@@ -32,9 +37,16 @@ class AdicionarLivro(ttk.Frame):
         genero = self.combo_genero.get()
         status = self.combo_status.get()
 
-        livro = Livro(titulo, autor, paginas, genero, status)
+        #Capturando Data
+        hoje_obj = date.today()
+        hoje_banco = str(hoje_obj)
 
-        print(livro)
+        livro = Livro(titulo, autor, paginas, genero, status, hoje_banco, '-')
+
+        if gerente.cadastrar_livro(livro):
+            messagebox.showinfo('Sucesso!', 'Livro cadastrado com Sucesso!')
+        else:
+            messagebox.showerror('=(', 'Algo deu errado, livro não cadastrado')    
 
 class MinhaEstante(ttk.Frame):
     def __init__(self, master = None, *args, **kwargs):
@@ -43,36 +55,37 @@ class MinhaEstante(ttk.Frame):
 class Estatisticas(ttk.Frame):
     def __init__(self, master = None, *args, **kwargs):
         super().__init__(master, *args, **kwargs)
-
+        self.config(borderwidth=5, relief='solid')
+        self.frame_central = ttk.Frame(self)
+        self.frame_central.place(relx=0.5, rely=0.5, anchor='center')
         self.card_estatisticas()
         self.card_livros_lidos()
         self.card_top_genero()
 
 
     def card_estatisticas(self):
-        card = ttk.Frame(self, borderwidth=5, relief='solid')
-        card.grid(row=0, column=0)
-        titulo = ttk.Label(card, text='Paginômetro')
+        card = ttk.Frame(self.frame_central, borderwidth=5, relief='solid')
+        card.grid(row=0, column=0, padx=5, pady=5)
+        titulo = ttk.Label(card, text='Paginômetro', font=CARD_TITULO)
         titulo.pack()
         total_paginas =  ttk.Label(card, text='4500')
         total_paginas.pack()
     
     def card_livros_lidos(self):
-        card = ttk.Frame(self, borderwidth=5, relief='solid')
-        card.grid(row=0, column=1)
-        titulo = ttk.Label(card, text='Livros Lidos')
+        card = ttk.Frame(self.frame_central, borderwidth=5, relief='solid')
+        card.grid(row=0, column=1, padx=5, pady=5)
+        titulo = ttk.Label(card, text='Livros Lidos', font=CARD_TITULO)
         titulo.pack()
         qtd_livros = ttk.Label(card, text='12')
         qtd_livros.pack()
 
     def card_top_genero(self):
-        card = ttk.Frame(self, borderwidth=5, relief='solid')
-        card.grid(row=0, column=2)
-        titulo = ttk.Label(card, text='Top Gênero')
+        card = ttk.Frame(self.frame_central, borderwidth=5, relief='solid')
+        card.grid(row=0, column=2, padx=5, pady=5)
+        titulo = ttk.Label(card, text='Top Gênero', font=CARD_TITULO)
         titulo.pack()
         genero = ttk.Label(card, text='Fantasia')
         genero.pack()
-        
 
 #Funções para montagem das interfaces
 def montar_add_livro(frame_pai):
@@ -88,29 +101,27 @@ def montar_minha_estante(frame_pai):
 def montar_estatisticas(frame_pai):
     ttk.Label(frame_pai, text='Estatisticas', font=CABECALHOS).pack()
     estatisticas = Estatisticas(frame_pai)
-    estatisticas.pack(fill='both', expand=True)
+    estatisticas.pack(fill='both', expand=True, padx=10, pady=10)
+
+class Janela(ttk.Frame):
+    def __init__(self, master = None, *args, **kwargs):
+        super().__init__(master,*args, **kwargs)
+        #notebook (Container com as Abas)
+        notebook = ttk.Notebook(self)
+        notebook.pack(fill='both', expand=True, padx=5, pady=5)
+        #Frames com as páginas
+        frame_add_livro = ttk.Frame(notebook)
+        frame_minha_estante = ttk.Frame(notebook)
+        frame_estatisticas = ttk.Frame(notebook)
+
+        #Adicionando a Frame na interface
+        notebook.add(frame_add_livro, text='Novo Livro')
+        notebook.add(frame_minha_estante, text='Minha Estante')
+        notebook.add(frame_estatisticas, text='Estatísticas')
+
+        #Funções para preencher as Frames
+        montar_add_livro(frame_add_livro)
+        montar_minha_estante(frame_minha_estante)
+        montar_estatisticas(frame_estatisticas)
 
 
-raiz = tk.Tk()
-raiz.geometry('700x500')
-
-#notebook (Container com as Abas)
-notebook = ttk.Notebook(raiz)
-notebook.pack(fill='both', expand=True, padx=5, pady=5)
-
-#Frames com as páginas
-frame_add_livro = ttk.Frame(notebook)
-frame_minha_estante = ttk.Frame(notebook)
-frame_estatisticas = ttk.Frame(notebook)
-
-#Adicionando a Frame na interface
-notebook.add(frame_add_livro, text='Novo Livro')
-notebook.add(frame_minha_estante, text='Minha Estante')
-notebook.add(frame_estatisticas, text='Estatísticas')
-
-#Funções para preencher as Frames
-montar_add_livro(frame_add_livro)
-montar_minha_estante(frame_minha_estante)
-montar_estatisticas(frame_estatisticas)
-
-raiz.mainloop()

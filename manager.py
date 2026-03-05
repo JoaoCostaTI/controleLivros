@@ -8,7 +8,7 @@ class Gerenciador:
     def cadastrar_livro(self, livro_obj):
         titulo = livro_obj.titulo
         autor = livro_obj.autor
-        total_paginas = livro_obj.total_paginas
+        total_paginas = livro_obj.paginas
         genero = livro_obj.genero
         status = livro_obj.status
         data_inicio = livro_obj.data_inicio
@@ -17,8 +17,8 @@ class Gerenciador:
         sql = 'INSERT INTO livros VALUES(?,?,?,?,?,?,?)'
 
         try:
-            self.db.executar_sql(sql, (titulo, autor, total_paginas, genero, status, data_inicio, data_termino))
-            return True
+            if self.db.executar_sql(sql, (titulo, autor, total_paginas, genero, status, data_inicio, data_termino)):
+                return True
         except Exception as e:
             print(e)
             return False

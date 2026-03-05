@@ -16,19 +16,22 @@ class Database:
                 paginas integer, 
                 genero text, 
                 status text,
-                data_inicio text 
+                data_inicio text,
+                data_termino text 
                 )
                 '''
             cursor.execute(sql)
             conexao.commit()
 
-    def executar_sql(self, sql):
+    def executar_sql(self, sql, value = ()):
         try:
             with sqlite3.connect(self.nome_banco) as connection:
                 cur = connection.cursor()
-                cur.execute(sql)
+                cur.execute(sql, value)
                 connection.commit()
+                return True
         except Exception as e:
             print(e)
+            return False
 
         

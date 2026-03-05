@@ -50,3 +50,4 @@ COMBO_GENERO = ["Biografia / Memórias",
 
 COMBO_STATUS = ['Lendo', 'Lido', 'Quero Ler']
 
+CARD_TITULO = ('ARIAL', 10, 'bold')

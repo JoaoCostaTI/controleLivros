@@ -52,6 +52,25 @@ class MinhaEstante(ttk.Frame):
     def __init__(self, master = None, *args, **kwargs):
         super().__init__(master, *args, **kwargs)
 
+        #Tabela
+        self.tabela = ttk.Treeview(self, columns=COLUNAS_LIVRO, show='headings')
+        self.tabela.heading('titulo', text='Titulo')
+        self.tabela.heading('autor', text='Autor')
+        self.tabela.heading('paginas', text='Páginas')
+        self.tabela.heading('genero', text='Gênero')
+        self.tabela.heading('status', text='Status')
+        self.tabela.heading('data_inicio', text='Data Inicio')
+        self.tabela.heading('data_termino', text='Data Término')
+        self.tabela.pack(fill='both', expand=True)
+
+        self.tabela.column('titulo', anchor='center', width=150, stretch=False)
+        self.tabela.column('autor', anchor='center', width=150, stretch=False)
+        self.tabela.column('paginas', anchor='center', width=150, stretch=False)
+        self.tabela.column('genero', anchor='center', width=150, stretch=False)
+        self.tabela.column('status', anchor='center', width=150, stretch=False)
+        self.tabela.column('data_inicio', anchor='center', width=150, stretch=False)
+        self.tabela.column('data_termino', anchor='center', width=150, stretch=False)
+
 class Estatisticas(ttk.Frame):
     def __init__(self, master = None, *args, **kwargs):
         super().__init__(master, *args, **kwargs)

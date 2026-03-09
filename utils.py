@@ -51,3 +51,5 @@ COMBO_GENERO = ["Biografia / Memórias",
 COMBO_STATUS = ['Lendo', 'Lido', 'Quero Ler']
 
 CARD_TITULO = ('ARIAL', 10, 'bold')
+
+COLUNAS_LIVRO = ['titulo', 'autor', 'paginas', 'genero', 'status', 'data_inicio', 'data_termino']

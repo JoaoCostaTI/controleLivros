@@ -43,3 +43,13 @@ class Database:
                 return livros
         except Exception as e:
             return e
+        
+    def listar_livro_por_status(self, sql, status):
+        try:
+            with sqlite3.connect(self.nome_banco) as connection:
+                cur = connection.cursor()
+                cur.execute(sql, status)
+                livro_status = cur.fetchall()
+                return livro_status
+        except Exception as e:
+            return e

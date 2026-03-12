@@ -24,6 +24,9 @@ class Gerenciador:
             return False
         
     def listar_livros(self):
+        '''
+            Função para listar TODOS os livros
+        '''
         try:
             sql = 'SELECT * FROM livros'
             livros = self.db.listar_tudo(sql)
@@ -33,4 +36,14 @@ class Gerenciador:
             return False
     def criar_tabela_livros(self):
         self.db.criar_tabela()
+
+
+    def listar_livro_status(self, status):
+        '''
+            Função para listar um status especifico.
+            Utilizar a variável status
+        '''
+        sql = 'SELECT * FROM livros WHERE status = ?'
+        livros = self.db.listar_livro_por_status(sql, (status,))
+        return livros
 

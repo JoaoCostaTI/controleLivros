@@ -53,6 +53,15 @@ class MinhaEstante(ttk.Frame):
     def __init__(self, master = None, *args, **kwargs):
         super().__init__(master, *args, **kwargs)
 
+        self.frame_buscar = ttk.Frame(self)
+        self.frame_buscar.pack()
+
+        ttk.Label(self.frame_buscar, text='Status').grid(row=0, column=0, padx=5, pady=5)
+        self.combo_status = ttk.Combobox(self.frame_buscar, values=COMBO_STATUS, width=10)
+        self.combo_status.grid(row=0, column=1, padx=5, pady=5)
+        btn_listar = ttk.Button(self.frame_buscar, text='Listar', command= self.listar_por_status)
+        btn_listar.grid(row=0, column=2, padx=5, pady=5)
+
         #Tabela
         self.tabela = ttk.Treeview(self, columns=COLUNAS_LIVRO, show='headings')
         self.tabela.heading('titulo', text='Titulo')
@@ -73,9 +82,9 @@ class MinhaEstante(ttk.Frame):
         self.tabela.column('data_termino', anchor='center', width=150, stretch=False)
 
         try: 
-            livros = gerente.listar_livros()
-            if livros: 
-                for r in livros:
+            self.livros = gerente.listar_livros()
+            if self.livros: 
+                for r in self.livros:
                     titulo, autor, paginas, categoria, situacao, data_inicio, data_termino = r
                     data_inicio_usuario = converter_data_para_usuario(data_inicio)
                     data_termino_usuario = converter_data_para_usuario(data_termino)
@@ -83,6 +92,19 @@ class MinhaEstante(ttk.Frame):
         except Exception as e:
             print(e)
             messagebox.showinfo('=(', 'Nenhum livro cadastrado!')
+
+    def listar_por_status(self):
+        status = self.combo_status.get()
+        self.livros = gerente.listar_livro_status(status) 
+
+        #Limpar tabela atual
+        self.tabela.delete(*self.tabela.get_children())
+
+        for r in self.livros:
+            titulo, autor, paginas, categoria, situacao, data_inicio, data_termino = r
+            data_inicio_usuario = converter_data_para_usuario(data_inicio)
+            data_termino_usuario = converter_data_para_usuario(data_termino)
+            self.tabela.insert('', 'end', values=(titulo, autor, paginas, categoria, situacao, data_inicio_usuario, data_termino_usuario))
 
 class Estatisticas(ttk.Frame):
     def __init__(self, master = None, *args, **kwargs):
@@ -127,8 +149,11 @@ def montar_add_livro(frame_pai):
 
 def montar_minha_estante(frame_pai):
     ttk.Label(frame_pai, text='Minha Estante', font=CABECALHOS).pack()
+    #Listagem dos Livros
     minha_estante = MinhaEstante(frame_pai)
     minha_estante.pack()
+
+    
 
 def montar_estatisticas(frame_pai):
     ttk.Label(frame_pai, text='Estatisticas', font=CABECALHOS).pack()

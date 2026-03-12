@@ -7,6 +7,7 @@ from datetime import date
 
 
 gerente = Gerenciador()
+gerente.criar_tabela_livros()
 
 class AdicionarLivro(ttk.Frame):
     def __init__(self, master = None, *args, **kwargs):
@@ -70,6 +71,18 @@ class MinhaEstante(ttk.Frame):
         self.tabela.column('status', anchor='center', width=150, stretch=False)
         self.tabela.column('data_inicio', anchor='center', width=150, stretch=False)
         self.tabela.column('data_termino', anchor='center', width=150, stretch=False)
+
+        try: 
+            livros = gerente.listar_livros()
+            if livros: 
+                for r in livros:
+                    titulo, autor, paginas, categoria, situacao, data_inicio, data_termino = r
+                    data_inicio_usuario = converter_data_para_usuario(data_inicio)
+                    data_termino_usuario = converter_data_para_usuario(data_termino)
+                    self.tabela.insert('', 'end', values=(titulo, autor, paginas, categoria, situacao, data_inicio_usuario, data_termino_usuario))
+        except Exception as e:
+            print(e)
+            messagebox.showinfo('=(', 'Nenhum livro cadastrado!')
 
 class Estatisticas(ttk.Frame):
     def __init__(self, master = None, *args, **kwargs):

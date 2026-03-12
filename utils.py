@@ -30,7 +30,7 @@ def converter_data_para_usuario(data):
         data_obj = datetime.strptime(data, '%Y-%m-%d')
         return data_obj.strftime('%d/%m/%Y')
     except ValueError:
-        return None
+        return '-'
     
 CABECALHOS = ('HELVICA', 14, 'bold')
 

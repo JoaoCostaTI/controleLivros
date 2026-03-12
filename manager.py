@@ -23,6 +23,14 @@ class Gerenciador:
             print(e)
             return False
         
+    def listar_livros(self):
+        try:
+            sql = 'SELECT * FROM livros'
+            livros = self.db.listar_tudo(sql)
+            return livros
+        except Exception as e:
+            print(e)
+            return False
     def criar_tabela_livros(self):
         self.db.criar_tabela()
 

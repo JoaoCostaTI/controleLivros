@@ -7,5 +7,4 @@ if __name__ == '__main__':
     raiz.geometry('1200x400')
     app = Janela(raiz)
     app.pack(fill='both', expand=True)
-    
     raiz.mainloop()

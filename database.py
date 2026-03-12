@@ -33,5 +33,13 @@ class Database:
         except Exception as e:
             print(e)
             return False
-
-        
+    
+    def listar_tudo(self, sql):
+        try:
+            with sqlite3.connect(self.nome_banco)  as connection:
+                cur = connection.cursor()
+                cur.execute(sql)
+                livros = cur.fetchall()
+                return livros
+        except Exception as e:
+            return e

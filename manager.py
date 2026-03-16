@@ -46,4 +46,13 @@ class Gerenciador:
         sql = 'SELECT * FROM livros WHERE status = ?'
         livros = self.db.listar_livro_por_status(sql, (status,))
         return livros
+    
+
+    def pesquisar_livro_gerente(self, livro):
+        try:
+            sql = 'SELECT * FROM livros WHERE titulo = ?'
+            livro_banco = self.db.pesquisa_livro_banco(sql, (livro,))
+            return livro_banco
+        except Exception as e:
+            print(e)
 

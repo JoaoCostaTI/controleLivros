@@ -53,3 +53,11 @@ class Database:
                 return livro_status
         except Exception as e:
             return e
+        
+    def pesquisa_livro_banco(self, sql, livro):
+        with sqlite3.connect(self.nome_banco) as connection:
+            cur = connection.cursor()
+            cur.execute(sql, livro)
+            livro = cur.fetchall()
+            return livro
+        

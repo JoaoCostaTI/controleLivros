@@ -1,9 +1,8 @@
-from datetime import date
-from utils import *
+algo = False
 
-hoje_obj = date.today()
+try:
+    if algo:
+        print('verdade')
 
-hoje_banco = str(hoje_obj)
-
-hoje_usuario = converter_data_para_usuario(hoje_banco)
-print(hoje_usuario)
+except:
+    print('Mentira')

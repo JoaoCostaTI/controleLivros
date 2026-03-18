@@ -1,5 +1,6 @@
 import sqlite3
 from database import Database
+from models import Livro
 
 class Gerenciador:
     def __init__(self):
@@ -23,6 +24,23 @@ class Gerenciador:
             print(e)
             return False
         
+    def atualizar_livro(self, livro_obj):
+        titulo = livro_obj.titulo
+        autor = livro_obj.autor
+        total_paginas = livro_obj.paginas
+        genero = livro_obj.genero
+        status = livro_obj.status
+        data_inicio = livro_obj.data_inicio
+        data_termino = livro_obj.data_termino
+
+        sql = 'UPDATE livros SET autor = ?, paginas = ?, genero = ?, status = ?, data_inicio = ?, data_termino = ?  WHERE titulo = ?'
+
+        try:
+            self.db.executar_sql(sql, (autor, total_paginas, genero, status, data_inicio, data_termino, titulo))
+            return True
+        except Exception as e:
+            print(e)
+
     def listar_livros(self):
         '''
             Função para listar TODOS os livros

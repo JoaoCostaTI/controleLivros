@@ -82,5 +82,22 @@ class Gerenciador:
         except Exception as e:
             print(e)
 
+    def paginometro_gerente(self):
+        try:
+            sql = "SELECT sum(paginas) FROM livros WHERE status = 'Lido'"
+            pag = self.db.paginometro_banco(sql)
+            return pag
+        except Exception as e:
+            print(e)
+
+    def listar_qtd_livros_status(self, status):
+        try:
+            sql = "SELECT COUNT(*) FROM livros WHERE status = ?"
+            lido = self.db.listar_qtd_livros_status_banco(sql, (status,))
+            return lido
+        except Exception as e:
+            print(e)
+
+
 
 

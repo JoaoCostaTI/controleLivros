@@ -61,3 +61,25 @@ class Database:
             livro = cur.fetchall()
             return livro
         
+    def paginometro_banco(self, sql):
+        with sqlite3.connect(self.nome_banco) as connection:
+            cur = connection.cursor()
+            cur.execute(sql)
+            pag = cur.fetchone()
+            paginas_lidas = pag[0]
+            if paginas_lidas is None:
+                paginas_lidas = 0
+            return paginas_lidas
+        
+    def listar_qtd_livros_status_banco(self,sql, value = ()):
+        try:
+            with sqlite3.connect(self.nome_banco) as connection:
+                cur = connection.cursor()
+                cur.execute(sql, value)
+                lido = cur.fetchone()
+                livros_lido = lido[0]
+                if livros_lido is None:
+                    livros_lido = 0
+                return livros_lido
+        except Exception as e:
+            print(e)

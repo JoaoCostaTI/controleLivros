@@ -14,17 +14,27 @@ class Estatisticas(ttk.Frame):
         self.config(borderwidth=5, relief='solid')
         self.frame_central = ttk.Frame(self)
         self.frame_central.place(relx=0.5, rely=0.5, anchor='center')
+        self.atualizar_cards()
+
+        self.btn_atualizar = ttk.Button(self, text='Atualizar', command=lambda:self.atualizar_cards())
+        self.btn_atualizar.pack()
+
+    def atualizar_cards(self):
         self.card_estatisticas()
         self.card_livros_lidos()
+        self.card_livros_lendo()
+        self.card_livros_quero_ler()
         self.card_top_genero()
-
 
     def card_estatisticas(self):
         card = ttk.Frame(self.frame_central, borderwidth=5, relief='solid')
         card.grid(row=0, column=0, padx=5, pady=5)
         titulo = ttk.Label(card, text='Paginômetro', font=CARD_TITULO)
         titulo.pack()
-        total_paginas =  ttk.Label(card, text='4500')
+
+        paginometro = gerente.paginometro_gerente()
+
+        total_paginas =  ttk.Label(card, text=paginometro)
         total_paginas.pack()
     
     def card_livros_lidos(self):
@@ -32,12 +42,37 @@ class Estatisticas(ttk.Frame):
         card.grid(row=0, column=1, padx=5, pady=5)
         titulo = ttk.Label(card, text='Livros Lidos', font=CARD_TITULO)
         titulo.pack()
-        qtd_livros = ttk.Label(card, text='12')
+
+        livros_lidos = gerente.listar_qtd_livros_status('Lido')
+
+        qtd_livros = ttk.Label(card, text=livros_lidos)
+        qtd_livros.pack()
+
+    def card_livros_lendo(self):
+        card = ttk.Frame(self.frame_central, borderwidth=5, relief='solid')
+        card.grid(row=0, column=2, padx=5, pady=5)
+        titulo = ttk.Label(card, text='Livros Lendo', font=CARD_TITULO)
+        titulo.pack()
+
+        livros = gerente.listar_qtd_livros_status('Lendo')
+
+        qtd_livros = ttk.Label(card, text=livros)
+        qtd_livros.pack()
+    
+    def card_livros_quero_ler(self):
+        card = ttk.Frame(self.frame_central, borderwidth=5, relief='solid')
+        card.grid(row=0, column=3, padx=5, pady=5)
+        titulo = ttk.Label(card, text='Livros Quero Ler', font=CARD_TITULO)
+        titulo.pack()
+
+        livros = gerente.listar_qtd_livros_status('Quero Ler')
+
+        qtd_livros = ttk.Label(card, text=livros)
         qtd_livros.pack()
 
     def card_top_genero(self):
         card = ttk.Frame(self.frame_central, borderwidth=5, relief='solid')
-        card.grid(row=0, column=2, padx=5, pady=5)
+        card.grid(row=0, column=4, padx=5, pady=5)
         titulo = ttk.Label(card, text='Top Gênero', font=CARD_TITULO)
         titulo.pack()
         genero = ttk.Label(card, text='Fantasia')

@@ -74,3 +74,13 @@ class Gerenciador:
         except Exception as e:
             print(e)
 
+    def excluir_livro(self, livro):
+        try:
+            sql = 'DELETE FROM livros WHERE  titulo = ?'
+            self.db.executar_sql(sql, (livro,))
+            return
+        except Exception as e:
+            print(e)
+
+
+

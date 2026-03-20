@@ -132,8 +132,6 @@ class MinhaEstante(ttk.Frame):
         self.tabela.column('data_inicio', anchor='center', width=150, stretch=False)
         self.tabela.column('data_termino', anchor='center', width=150, stretch=False)
 
-        
-
         self.lista_todos_livros()
 
     def atualizar_dados_tabela(self, livros):
@@ -197,7 +195,8 @@ class EditarLivro(ttk.Frame):
         self.combo_status.grid(row=4, column=1, padx=5, pady=5, sticky='w')
 
         #BTN's
-        self.btn_salvar = ttk.Button(self.frame_editar_livro, text= 'Salvar', width=18, command=self.salvar_livro).grid(row=7, column=1, pady=5, padx=5)
+        self.btn_salvar = ttk.Button(self.frame_editar_livro, text= 'Salvar', width=15,command=self.salvar_livro).grid(row=7, column=1, pady=5, padx=5, sticky='w')
+        self.btn_excluir = ttk.Button(self.frame_editar_livro, text='Excluir Livro', width=15, command=self.excluir_livro).grid(row=7, column=0, pady=5, padx=5, sticky='e')
 
     def pesquisar_livro(self):
         livro = self.ent_nome_livro.get()
@@ -218,13 +217,7 @@ class EditarLivro(ttk.Frame):
             data_inicio_usuario = converter_data_para_usuario(data_inicio)
 
             #Limpando os Campos
-            self.ent_titulo.delete(0, 'end')
-            self.ent_autor.delete(0, 'end')
-            self.ent_paginas.delete(0, 'end')
-            self.combo_genero.set('')
-            self.combo_status.set('') 
-            self.ent_data_inicio.delete(0, 'end')
-            self.ent_data_termino.delete(0, 'end')
+            self.limpar_campos()
 
             #Inserindo os Dados
             self.ent_titulo.insert(0, titulo)
@@ -268,6 +261,29 @@ class EditarLivro(ttk.Frame):
         else:
             messagebox.showerror('=(', 'Algo deu errado, livro não cadastrado')  
 
+    def excluir_livro(self):
+        livro = self.ent_titulo.get()
+        if livro:
+            confirmacao = messagebox.askyesno('Confirmação', f'Deseja excluir o livro: {livro}')
+            if confirmacao:
+                gerente.excluir_livro(livro)
+                messagebox.showinfo('=)', f'Livro excluido com Sucesso!')
+                self.limpar_campos()
+                return
+        else:
+            messagebox.showwarning('!', 'Preencher o nome do livro! ')
+            return
+
+    def limpar_campos(self):
+        #Limpando os Campos
+        self.ent_titulo.delete(0, 'end')
+        self.ent_autor.delete(0, 'end')
+        self.ent_paginas.delete(0, 'end')
+        self.combo_genero.set('')
+        self.combo_status.set('') 
+        self.ent_data_inicio.delete(0, 'end')
+        self.ent_data_termino.delete(0, 'end')
+
 #Funções para montagem das interfaces
 
 def montar_estatisticas(frame_pai):
@@ -284,7 +300,7 @@ def montar_minha_estante(frame_pai):
     ttk.Label(frame_pai, text='Minha Estante', font=CABECALHOS).pack()
     #Listagem dos Livros
     minha_estante = MinhaEstante(frame_pai)
-    minha_estante.pack()
+    minha_estante.pack(fill='both', expand=True)
 
 def montar_editar_livro(frame_pai):
     ttk.Label(frame_pai, text='Editar Livro', font=CABECALHOS).pack(padx=10, pady=10, anchor='center')

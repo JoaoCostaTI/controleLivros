@@ -98,6 +98,20 @@ class Gerenciador:
         except Exception as e:
             print(e)
 
+    def top_genero_gerente(self):
+        try: 
+            sql = '''
+                SELECT genero, COUNT(genero) AS quantidade
+                FROM livros
+                GROUP BY genero
+                ORDER BY quantidade DESC
+                LIMIT 1
+            '''
+            genero = self.db.top_genero_banco(sql)
+            return genero
+        except Exception as e:
+            print(e)
+
 
 
 

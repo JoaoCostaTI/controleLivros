@@ -8,3 +8,5 @@ if __name__ == '__main__':
     app = Janela(raiz)
     app.pack(fill='both', expand=True)
     raiz.mainloop()
+
+   

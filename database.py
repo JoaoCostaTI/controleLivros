@@ -83,3 +83,13 @@ class Database:
                 return livros_lido
         except Exception as e:
             print(e)
+
+    def top_genero_banco(self, sql):
+        try: 
+            with sqlite3.connect(self.nome_banco) as connection:
+                cur = connection.cursor()
+                cur.execute(sql)
+                genero = cur.fetchone()[0]
+                return genero
+        except Exception as e:
+            print(e)

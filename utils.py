@@ -50,6 +50,7 @@ COMBO_GENERO = ["Biografia / Memórias",
 
 COMBO_STATUS = ['Lendo', 'Lido', 'Quero Ler']
 
-CARD_TITULO = ('ARIAL', 10, 'bold')
+CARD_TITULO = ('Segoe UI', 10)
+CARD_ELEMENTO = ('Arial Black', 14)
 
 COLUNAS_LIVRO = ['titulo', 'autor', 'paginas', 'genero', 'status', 'data_inicio', 'data_termino']

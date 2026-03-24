@@ -105,13 +105,25 @@ class Gerenciador:
                 FROM livros
                 GROUP BY genero
                 ORDER BY quantidade DESC
-                LIMIT 1
+                LIMIT 3
             '''
             genero = self.db.top_genero_banco(sql)
             return genero
         except Exception as e:
             print(e)
 
-
-
+    def livros_ano_gerente(self):
+        try: 
+            sql = '''
+                SELECT strftime('%Y', data_termino) AS ano, COUNT(titulo) AS quantidade
+                FROM livros
+                WHERE status = 'Lido' and data_termino != '-'
+                GROUP BY ano
+                ORDER BY quantidade DESC
+                LIMIT 3
+            '''
+            livros_ano = self.db.livros_ano_banco(sql)
+            return livros_ano
+        except Exception as e:
+            print(e)
 

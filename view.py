@@ -9,14 +9,14 @@ from datetime import date
 gerente = Gerenciador()
 
 class Card(ttk.Frame):
-    def __init__(self, titulo, informacoes, master = None, *args, **kwargs):
+    def __init__(self, titulo, informacoes, fonte_card=CARD_TITULO, fonte_elemento=CARD_ELEMENTO, cor_valor="#27ae60", master = None, *args, **kwargs):
         super().__init__(master, *args, **kwargs)
         self.config(borderwidth=5, relief='solid')
         
-        self.titulo = ttk.Label(self, text=titulo, font=CARD_TITULO)
+        self.titulo = ttk.Label(self, text=titulo, font=fonte_card)
         self.titulo.pack()
 
-        self.informacoes = ttk.Label(self, text=informacoes)
+        self.informacoes = ttk.Label(self, text=informacoes, font=fonte_elemento, foreground=cor_valor)
         self.informacoes.pack()
 
 class Estatisticas(ttk.Frame):
@@ -32,23 +32,31 @@ class Estatisticas(ttk.Frame):
         
     def atualizar_cards(self):
         # Card's
+        card_livros_lidos = Card('Lidos', gerente.listar_qtd_livros_status('Lido'), master=self.frame_central, cor_valor="#246da8")
+        card_livros_lidos.grid(row=0, column=0, pady=10, padx=10, sticky='nsew')
+
+        card_livros_lendo = Card('Lendo', gerente.listar_qtd_livros_status('Lendo'), master=self.frame_central, cor_valor="#246da8")
+        card_livros_lendo.grid(row=0, column=1, pady=10, padx=10, sticky='nsew')
+
+        card_livros_quero_ler = Card('Quero Ler', gerente.listar_qtd_livros_status('Quero Ler'), master=self.frame_central, cor_valor="#246da8")
+        card_livros_quero_ler.grid(row=0, column=2, pady=10, padx=10, sticky='nsew')
+
         card_paginometro = Card('Paginômetro',gerente.paginometro_gerente(), master=self.frame_central )
-        card_paginometro.grid(row=0, column=0, pady=5, padx=5)
+        card_paginometro.grid(row=1, column=0, pady=10, padx=10, sticky='nsew')
 
-        card_livros_lidos = Card('Lidos', gerente.listar_qtd_livros_status('Lido'), master=self.frame_central)
-        card_livros_lidos.grid(row=0, column=1, pady=5, padx=5)
+        generos = gerente.top_genero_gerente()
+        generos_desempacotado = [f"{genero} - {qtd}" for genero, qtd in generos]
+        generos_formatado = "\n".join(generos_desempacotado)
+        card_top_genero = Card('Top Gênero', generos_formatado, master=self.frame_central, fonte_elemento=('Helvetica', 10), cor_valor="#a15d1c")
+        card_top_genero.grid(row=1, column=1, pady=10, padx=10, sticky='nsew')
 
-        card_livros_lendo = Card('Lendo', gerente.listar_qtd_livros_status('Lendo'), master=self.frame_central)
-        card_livros_lendo.grid(row=0, column=2, pady=5, padx=5)
 
-        card_livros_quero_ler = Card('Quero Ler', gerente.listar_qtd_livros_status('Quero Ler'), master=self.frame_central)
-        card_livros_quero_ler.grid(row=1, column=0, pady=5, padx=5)
-
-        card_top_genero = Card('Top Gênero', gerente.top_genero_gerente(), master=self.frame_central)
-        card_top_genero.grid(row=1, column=1, pady=5, padx=5)
-
-        card_livros_por_ano = Card('Livros por Ano', '2025', master=self.frame_central)
-        card_livros_por_ano.grid(row=1, column=2, padx=5, pady=5)
+        livros_ano = gerente.livros_ano_gerente()
+        livros_ano_desempacotado = [f'{ano} - {qtd}' for ano, qtd in livros_ano]
+        livros_formatado = '\n'.join(livros_ano_desempacotado)
+        card_livros_por_ano = Card('Livros por Ano', livros_formatado, master=self.frame_central)
+        card_livros_por_ano.grid(row=1, column=2, pady=10, padx=10, sticky='nsew')
+        
 
 class AdicionarLivro(ttk.Frame):
     def __init__(self, master = None, *args, **kwargs):

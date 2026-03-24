@@ -89,7 +89,19 @@ class Database:
             with sqlite3.connect(self.nome_banco) as connection:
                 cur = connection.cursor()
                 cur.execute(sql)
-                genero = cur.fetchone()[0]
+                genero = cur.fetchall()
                 return genero
         except Exception as e:
             print(e)
+
+    def livros_ano_banco(self, sql):
+        try: 
+            with sqlite3.connect(self.nome_banco) as connection:
+                cur = connection.cursor()
+                cur.execute(sql)
+                livros = cur.fetchall()
+                print(livros)
+                return livros
+        except Exception as e:
+            print(e)
+    

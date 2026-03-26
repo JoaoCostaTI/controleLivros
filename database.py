@@ -1,7 +1,4 @@
 import sqlite3
-from models import Livro
-
-
 
 class Database:
     def __init__(self, nome_banco):
@@ -100,8 +97,8 @@ class Database:
                 cur = connection.cursor()
                 cur.execute(sql)
                 livros = cur.fetchall()
-                print(livros)
                 return livros
         except Exception as e:
             print(e)
     
+

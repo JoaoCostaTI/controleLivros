@@ -57,7 +57,6 @@ class Estatisticas(ttk.Frame):
         card_livros_por_ano = Card('Livros por Ano', livros_formatado, master=self.frame_central)
         card_livros_por_ano.grid(row=1, column=2, pady=10, padx=10, sticky='nsew')
         
-
 class AdicionarLivro(ttk.Frame):
     def __init__(self, master = None, *args, **kwargs):
         super().__init__(master, *args, **kwargs)
@@ -81,7 +80,7 @@ class AdicionarLivro(ttk.Frame):
         self.btn_salvar = ttk.Button(self, text= 'Salvar', width=18, command=self.salvar_livro).grid(row=5, column=1, pady=5, padx=5)
         
     def salvar_livro(self):
-        titulo = self.ent_titulo.get()
+        titulo = self.ent_titulo.get().capitalize()
         autor = self.ent_autor.get()
         paginas = self.ent_paginas.get()
         genero = self.combo_genero.get()
@@ -230,6 +229,7 @@ class EditarLivro(ttk.Frame):
             titulo, autor, paginas, genero, status, data_inicio, data_termino = livro[0]
 
             data_inicio_usuario = converter_data_para_usuario(data_inicio)
+            data_termino_usuario = converter_data_para_usuario(data_termino)
 
             #Limpando os Campos
             self.limpar_campos()
@@ -241,8 +241,22 @@ class EditarLivro(ttk.Frame):
             self.combo_genero.insert(0, genero)
             self.combo_status.insert(0, status) 
             self.ent_data_inicio.insert(0, data_inicio_usuario)
-            self.ent_data_termino.insert(0, data_termino)
+            self.ent_data_termino.insert(0, data_termino_usuario)
 
+            #Capturando Data
+            hoje_obj = date.today()
+            hoje_banco = str(hoje_obj)
+            hoje_usuario = converter_data_para_usuario(hoje_banco)
+
+            def reagir_a_escolha(event):
+                escolha_atual = self.combo_status.get()
+                if escolha_atual == 'Lido':
+                    self.ent_data_termino.delete(0,'end')
+                    self.ent_data_termino.insert(0, hoje_usuario)
+                else:
+                    self.ent_data_termino.delete(0,'end')
+                    self.ent_data_termino.insert(0, data_termino_usuario)
+            self.combo_status.bind('<<ComboboxSelected>>', reagir_a_escolha)
 
         else:
             messagebox.showinfo('=(', 'Livro não encontrado.')
@@ -273,6 +287,13 @@ class EditarLivro(ttk.Frame):
 
         if gerente.atualizar_livro(livro):
             messagebox.showinfo('Sucesso!', 'Livro atualizado com Sucesso!')
+            self.ent_titulo.delete(0, 'end')
+            self.ent_autor.delete(0, 'end')
+            self.ent_paginas.delete(0, 'end')
+            self.combo_genero.set('')
+            self.combo_status.set('')
+            self.ent_data_inicio.delete(0, 'end')
+            self.ent_data_termino.delete(0,'end')
         else:
             messagebox.showerror('=(', 'Algo deu errado, livro não cadastrado')  
 

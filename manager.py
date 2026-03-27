@@ -105,7 +105,7 @@ class Gerenciador:
                 FROM livros
                 GROUP BY genero
                 ORDER BY quantidade DESC
-                LIMIT 3
+                LIMIT 5
             '''
             genero = self.db.top_genero_banco(sql)
             return genero

@@ -78,6 +78,22 @@ class AdicionarLivro(ttk.Frame):
 
         #BTN's
         self.btn_salvar = ttk.Button(self, text= 'Salvar', width=18, command=self.salvar_livro).grid(row=5, column=1, pady=5, padx=5)
+
+        # Validando Combo Status
+        
+        def reagir_a_escolha(event):
+            """
+            Verificando no cadastro se o status é Lido, caso positivo, o sistema captura a data de hoje e já seta na data término
+            """
+            self.escolha_atual = self.combo_status.get()
+            hoje_termino = date.today()
+            
+
+            if self.escolha_atual == 'Lido':
+                self.hoje_termino_banco = str(hoje_termino)
+            else: 
+                self.escolha_atual = ''
+        self.combo_status.bind('<<ComboboxSelected>>', reagir_a_escolha)
         
     def salvar_livro(self):
         titulo = self.ent_titulo.get().capitalize()
@@ -89,12 +105,15 @@ class AdicionarLivro(ttk.Frame):
         if not titulo or not autor:
             messagebox.showwarning('Atenção!', 'Preencher todos os campos!')
             return
-
+                  
         #Capturando Data
         hoje_obj = date.today()
         hoje_banco = str(hoje_obj)
 
-        livro = Livro(titulo, autor, paginas, genero, status, hoje_banco, '-')
+        if self.escolha_atual:
+            livro = Livro(titulo, autor, paginas, genero, status, hoje_banco, self.hoje_termino_banco)
+        else:
+            livro = Livro(titulo, autor, paginas, genero, status, hoje_banco, '-')
 
         if gerente.cadastrar_livro(livro):
             messagebox.showinfo('Sucesso!', 'Livro cadastrado com Sucesso!')
@@ -213,7 +232,8 @@ class EditarLivro(ttk.Frame):
         self.btn_excluir = ttk.Button(self.frame_editar_livro, text='Excluir Livro', width=15, command=self.excluir_livro).grid(row=7, column=0, pady=5, padx=5, sticky='e')
 
     def pesquisar_livro(self):
-        livro = self.ent_nome_livro.get()
+        livro = self.ent_nome_livro.get().capitalize()
+        print(livro)
         livro = gerente.pesquisar_livro_gerente(livro)
 
         if livro:
@@ -259,6 +279,10 @@ class EditarLivro(ttk.Frame):
             self.combo_status.bind('<<ComboboxSelected>>', reagir_a_escolha)
 
         else:
+            try:
+                self.limpar_campos()
+            except:
+                pass
             messagebox.showinfo('=(', 'Livro não encontrado.')
         
     def salvar_livro(self):

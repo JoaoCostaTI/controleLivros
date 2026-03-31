@@ -125,5 +125,5 @@ class Gerenciador:
             livros_ano = self.db.livros_ano_banco(sql)
             return livros_ano
         except Exception as e:
-            print(e)
+            raise e
 

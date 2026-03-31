@@ -2,5 +2,6 @@
 Controle pessoal de leitura de livros
 
 # Correções:
-# Quando cadastrar um livro e ele já for como LIDO, setar data de hoje no término. 
-# Quando pesquisar o livro na aba Editar, adicionar .capitalize()
+# Abas (AdicionarLivro e EditarLivro) criar uma classe chamada FormularioLivro e usar nas duas Classes. Usando todas entry's e labels em comum. 
+# Tratamentos de erros usando RAISE
+# 3. Vazamento de Memória (Memory Leak) com Eventos (Em pesquisar livro) .bind

@@ -5,9 +5,6 @@ from models import Livro
 from manager import Gerenciador
 from datetime import date
 
-
-gerente = Gerenciador()
-
 class Card(ttk.Frame):
     def __init__(self, titulo, informacoes, fonte_card=CARD_TITULO, fonte_elemento=CARD_ELEMENTO, cor_valor="#27ae60", master = None, *args, **kwargs):
         super().__init__(master, *args, **kwargs)
@@ -20,8 +17,9 @@ class Card(ttk.Frame):
         self.informacoes.pack()
 
 class Estatisticas(ttk.Frame):
-    def __init__(self, master = None, *args, **kwargs):
+    def __init__(self, master = None, gerente = None, *args, **kwargs):
         super().__init__(master, *args, **kwargs)
+        self.gerente = gerente
         self.config(borderwidth=5, relief='solid')
         self.frame_central = ttk.Frame(self)
         self.frame_central.place(relx=0.5, rely=0.5, anchor='center')
@@ -32,34 +30,35 @@ class Estatisticas(ttk.Frame):
         
     def atualizar_cards(self):
         # Card's
-        card_livros_lidos = Card('Lidos', gerente.listar_qtd_livros_status('Lido'), master=self.frame_central, cor_valor="#246da8")
+        card_livros_lidos = Card('Lidos', self.gerente.listar_qtd_livros_status('Lido'), master=self.frame_central, cor_valor="#246da8")
         card_livros_lidos.grid(row=0, column=0, pady=10, padx=10, sticky='nsew')
 
-        card_livros_lendo = Card('Lendo', gerente.listar_qtd_livros_status('Lendo'), master=self.frame_central, cor_valor="#246da8")
+        card_livros_lendo = Card('Lendo', self.gerente.listar_qtd_livros_status('Lendo'), master=self.frame_central, cor_valor="#246da8")
         card_livros_lendo.grid(row=0, column=1, pady=10, padx=10, sticky='nsew')
 
-        card_livros_quero_ler = Card('Quero Ler', gerente.listar_qtd_livros_status('Quero Ler'), master=self.frame_central, cor_valor="#246da8")
+        card_livros_quero_ler = Card('Quero Ler', self.gerente.listar_qtd_livros_status('Quero Ler'), master=self.frame_central, cor_valor="#246da8")
         card_livros_quero_ler.grid(row=0, column=2, pady=10, padx=10, sticky='nsew')
 
-        card_paginometro = Card('Paginômetro',gerente.paginometro_gerente(), master=self.frame_central )
+        card_paginometro = Card('Paginômetro',self.gerente.paginometro_gerente(), master=self.frame_central )
         card_paginometro.grid(row=1, column=0, pady=10, padx=10, sticky='nsew')
 
-        generos = gerente.top_genero_gerente()
+        generos = self.gerente.top_genero_gerente()
         generos_desempacotado = [f"{genero} - {qtd}" for genero, qtd in generos]
         generos_formatado = "\n".join(generos_desempacotado)
         card_top_genero = Card('Top Gênero', generos_formatado, master=self.frame_central, fonte_elemento=('Helvetica', 10), cor_valor="#a15d1c")
         card_top_genero.grid(row=1, column=1, pady=10, padx=10, sticky='nsew')
 
 
-        livros_ano = gerente.livros_ano_gerente()
+        livros_ano = self.gerente.livros_ano_gerente()
         livros_ano_desempacotado = [f'{ano} - {qtd}' for ano, qtd in livros_ano]
         livros_formatado = '\n'.join(livros_ano_desempacotado)
         card_livros_por_ano = Card('Livros por Ano', livros_formatado, master=self.frame_central)
         card_livros_por_ano.grid(row=1, column=2, pady=10, padx=10, sticky='nsew')
         
 class AdicionarLivro(ttk.Frame):
-    def __init__(self, master = None, *args, **kwargs):
+    def __init__(self, master = None, gerente = None, *args, **kwargs):
         super().__init__(master, *args, **kwargs)
+        self.gerente = gerente
         ttk.Label(self, text='Titulo').grid(row=0, column=0, pady=5, padx=5, sticky='e')
         self.ent_titulo = ttk.Entry(self, width=28)
         self.ent_titulo.grid(row=0, column=1, padx=5, pady=5, sticky='w')
@@ -115,7 +114,7 @@ class AdicionarLivro(ttk.Frame):
         else:
             livro = Livro(titulo, autor, paginas, genero, status, hoje_banco, '-')
 
-        if gerente.cadastrar_livro(livro):
+        if self.gerente.cadastrar_livro(livro):
             messagebox.showinfo('Sucesso!', 'Livro cadastrado com Sucesso!')
             self.ent_titulo.delete(0, 'end')
             self.ent_autor.delete(0, 'end')
@@ -126,9 +125,9 @@ class AdicionarLivro(ttk.Frame):
             messagebox.showerror('=(', 'Algo deu errado, livro não cadastrado')    
 
 class MinhaEstante(ttk.Frame):
-    def __init__(self, master = None, *args, **kwargs):
+    def __init__(self, master = None, gerente = None, *args, **kwargs):
         super().__init__(master, *args, **kwargs)
-
+        self.gerente = gerente
         frame_tabela = ttk.Frame(self)
         frame_tabela.pack(fill='both', expand=True, padx=10, pady=10)
 
@@ -178,7 +177,7 @@ class MinhaEstante(ttk.Frame):
 
     def lista_todos_livros(self):
         try: 
-            self.livros = gerente.listar_livros()
+            self.livros = self.gerente.listar_livros()
             if self.livros: 
                 self.atualizar_dados_tabela(self.livros)
         except Exception as e:
@@ -192,12 +191,14 @@ class MinhaEstante(ttk.Frame):
             self.lista_todos_livros()
             return
 
-        self.livros = gerente.listar_livro_status(status) 
+        self.livros = self.gerente.listar_livro_status(status) 
         self.atualizar_dados_tabela(self.livros)
 
 class EditarLivro(ttk.Frame):
-    def __init__(self, master = None, *args, **kwargs):
+    def __init__(self, master = None,gerente = None, *args, **kwargs):
         super().__init__(master, *args, **kwargs)
+
+        self.gerente = gerente
 
         self.frame_pesquisar_livro = ttk.Frame(self, borderwidth=5, relief='solid')
         self.frame_pesquisar_livro.pack(pady=5, padx=5)
@@ -234,7 +235,7 @@ class EditarLivro(ttk.Frame):
     def pesquisar_livro(self):
         livro = self.ent_nome_livro.get().capitalize()
         print(livro)
-        livro = gerente.pesquisar_livro_gerente(livro)
+        livro = self.gerente.pesquisar_livro_gerente(livro)
 
         if livro:
             ttk.Label(self.frame_editar_livro, text='Data Inicio').grid(row=5, column=0, padx=5, pady=5, sticky='e')
@@ -309,7 +310,7 @@ class EditarLivro(ttk.Frame):
         else:
             livro = Livro(titulo, autor, paginas, genero, status, hoje_inicio_banco, '-')
 
-        if gerente.atualizar_livro(livro):
+        if self.gerente.atualizar_livro(livro):
             messagebox.showinfo('Sucesso!', 'Livro atualizado com Sucesso!')
             self.ent_titulo.delete(0, 'end')
             self.ent_autor.delete(0, 'end')
@@ -326,7 +327,7 @@ class EditarLivro(ttk.Frame):
         if livro:
             confirmacao = messagebox.askyesno('Confirmação', f'Deseja excluir o livro: {livro}')
             if confirmacao:
-                gerente.excluir_livro(livro)
+                self.gerente.excluir_livro(livro)
                 messagebox.showinfo('=)', f'Livro excluido com Sucesso!')
                 self.limpar_campos()
                 return
@@ -346,34 +347,36 @@ class EditarLivro(ttk.Frame):
 
 #Funções para montagem das interfaces
 
-def montar_estatisticas(frame_pai):
+def montar_estatisticas(frame_pai, gerente_recebido):
     ttk.Label(frame_pai, text='Estatisticas', font=CABECALHOS).pack()
-    estatisticas = Estatisticas(frame_pai)
+    estatisticas = Estatisticas(frame_pai, gerente = gerente_recebido)
     estatisticas.pack(fill='both', expand=True, padx=10, pady=10)
 
-def montar_add_livro(frame_pai):
+def montar_add_livro(frame_pai, gerente_recebido):
     ttk.Label(frame_pai, text='Adicionar a Biblioteca', font= CABECALHOS).pack(padx=10, pady=10, anchor='center')
-    add_livro = AdicionarLivro(frame_pai)
+    add_livro = AdicionarLivro(frame_pai, gerente_recebido)
     add_livro.pack()
 
-def montar_minha_estante(frame_pai):
+def montar_minha_estante(frame_pai, gerente_recebido):
     ttk.Label(frame_pai, text='Minha Estante', font=CABECALHOS).pack()
     #Listagem dos Livros
-    minha_estante = MinhaEstante(frame_pai)
+    minha_estante = MinhaEstante(frame_pai, gerente_recebido)
     minha_estante.pack(fill='both', expand=True)
 
-def montar_editar_livro(frame_pai):
+def montar_editar_livro(frame_pai, gerente_recebido):
     ttk.Label(frame_pai, text='Editar Livro', font=CABECALHOS).pack(padx=10, pady=10, anchor='center')
 
-    editar_livro = EditarLivro(frame_pai)
+    editar_livro = EditarLivro(frame_pai, gerente_recebido)
     editar_livro.pack()
 
 class Janela(ttk.Frame):
-    def __init__(self, master = None, *args, **kwargs):
+    def __init__(self, master = None,gerente = None, *args, **kwargs):
         super().__init__(master,*args, **kwargs)
         #notebook (Container com as Abas)
         notebook = ttk.Notebook(self)
         notebook.pack(fill='both', expand=True, padx=5, pady=5)
+
+        self.gerente = gerente
 
         #Frames com as páginas
         frame_estatisticas = ttk.Frame(notebook)
@@ -388,9 +391,7 @@ class Janela(ttk.Frame):
         notebook.add(frame_editar_livro, text='Editar Livro')
 
         #Funções para preencher as Frames
-        montar_estatisticas(frame_estatisticas)
-        montar_add_livro(frame_add_livro)
-        montar_minha_estante(frame_minha_estante)
-        montar_editar_livro(frame_editar_livro)
-
-
+        montar_estatisticas(frame_estatisticas, self.gerente)
+        montar_add_livro(frame_add_livro, self.gerente)
+        montar_minha_estante(frame_minha_estante, self.gerente)
+        montar_editar_livro(frame_editar_livro, self.gerente)
